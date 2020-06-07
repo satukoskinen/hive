@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/06 17:12:41 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include <string.h>
-
-void	ft_bzero(void *s, size_t n)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	ft_memset(s, 0, n);
+	int i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i] && s1[i] + 32 != s2[i] && s1[i] - 32 != s2[i])
+			return (0);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (0);
+	return (1);
 }

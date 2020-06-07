@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: skoskine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/05 12:34:55 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/05 13:37:38 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	ft_memset(s, 0, n);
+	size_t	i;
+	void	*p;
+
+	i = 0;
+	p = b;
+	while (i < len)
+	{
+		*(char*)p = (unsigned char)c;
+		p++;
+		i++;
+	}
+	return (b);
 }

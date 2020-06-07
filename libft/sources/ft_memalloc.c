@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/06 13:32:51 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/06 13:49:50 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include <string.h>
+#include <stdlib.h>
+#include "../libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memalloc(size_t size)
 {
-	ft_memset(s, 0, n);
+	void *ptr;
+
+	if(!(ptr = malloc(size)))
+		return NULL;
+	ft_memset(ptr, 0, size);
+	return ptr;
 }

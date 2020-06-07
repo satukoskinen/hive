@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/06 09:31:53 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/06 13:40:53 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putendl(char const *s)
 {
-	ft_memset(s, 0, n);
+	ft_putstr(s);
+	ft_putchar('\n');
 }

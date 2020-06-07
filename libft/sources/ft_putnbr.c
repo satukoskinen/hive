@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/06 09:38:51 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/06 13:39:56 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putnbr(int n)
 {
-	ft_memset(s, 0, n);
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	while (n % 10 >= 10)
+		n /= 10;
+	ft_putchar(n % 10 + 48);
 }

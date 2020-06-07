@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 17:17:34 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/05 18:17:12 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/06 13:51:00 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,29 @@ int		ft_test_memset(void)
 		return (-1);
     if (!(str2 = (char*)malloc(sizeof(char) * 6)))
         return (-1);
-	ft_putstr("ft_memset: \n");
-	ft_putstr(ft_memset(str1, 64, 6));
-	ft_putchar('\n');
-    ft_putstr("memset: \n");
-    ft_putstr(memset(str1, 64, 6));
-	ft_putchar('\n');
+	str1 = ft_memset(str1, 64, 5);
+	str1[5] = '\0';
+	str2 = memset(str1, 64, 5);
+	str1[5] = '\0';
+	
+	ft_putendl("ft_memset:");
+	ft_putendl(str1);
+    ft_putendl("memset:");
+    ft_putendl(str2);
+	return (0);
+}
+
+int		ft_test_bzero(void)
+{
 	return (0);
 }
 
 int		ft_test_memcpy(void)
 {
-	
+	return (0);	
 }
+
+
 
 int		main(int argc, char **argv)
 {

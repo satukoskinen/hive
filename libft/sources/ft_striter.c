@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/06 14:59:24 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/06 15:03:25 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include <string.h>
-
-void	ft_bzero(void *s, size_t n)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	ft_memset(s, 0, n);
+	int i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(&s[i]);
+		i++;
+	}
 }

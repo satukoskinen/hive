@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 14:00:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 12:33:11 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/06 15:21:10 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/06 15:31:23 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../libft.h"
-#include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	ft_memset(s, 0, n);
+	char	*mapping;
+	int		i;
+
+	if (!(mapping = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return NULL;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		mapping[i] = f(i, s[i]);
+		i++;
+	}
+	mapping[i] = '\0';
+	return (mapping);
 }
