@@ -6,13 +6,14 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 14:53:08 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 14:55:27 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/07 20:39:30 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include <stdlib.h>
 
 void	ft_strdel(char **as)
 {
-	ft_memdel(as);
+	free(*as);
+	*as = NULL;
 }

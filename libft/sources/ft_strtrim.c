@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 13:52:25 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:39:28 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/07 15:56:33 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/07 20:46:24 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../libft.h"
 
-void	ft_memdel(void **ap)
+char	*ft_strtrim(char const *s)
 {
-	free(*ap);
-	*ap = NULL;
+	int		start;
+	int		end;
+
+	start = 0;
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	end = ft_strlen(s);
+	while ((s[end] == ' ' || s[end] == '\n' || s[end] == '\t') && end != start)
+		end--;
+	return (ft_strsub(s, start, end - start));
 }

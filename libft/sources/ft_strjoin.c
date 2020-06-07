@@ -1,19 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 13:52:25 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:39:28 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/07 15:43:14 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/07 20:44:46 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libft.h"
 #include <stdlib.h>
 
-void	ft_memdel(void **ap)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	free(*ap);
-	*ap = NULL;
+	char	*dest;
+	int		i;
+	int		j;
+
+	if (!(dest = (char*)malloc(sizeof(*dest) *
+	(ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		dest[i] = s2[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

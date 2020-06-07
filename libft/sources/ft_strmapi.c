@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 15:21:10 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 15:31:23 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/07 20:46:16 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 
 	if (!(mapping = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{

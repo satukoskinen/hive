@@ -6,16 +6,23 @@
 #    By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/05 13:58:06 by skoskine          #+#    #+#              #
-#    Updated: 2020/06/07 13:50:33 by skoskine         ###   ########.fr        #
+#    Updated: 2020/06/07 20:20:26 by skoskine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HEADER = libft.h
-OBJECTS = ft_memset.o ft_bzero.o ft_strlen.o ft_putchar.o ft_putstr.o \
-		ft_putendl.o ft_putnbr.o
+OBJECTS = ft_bzero.o ft_itoa.o ft_memalloc.o ft_memcpy.o ft_memdel.o \
+ft_memset.o ft_putchar_fd.o ft_putchar.o ft_putendl_fd.o ft_putendl.o \
+ft_putnbr_fd.o ft_putnbr.o ft_putstr_fd.o ft_putstr.o ft_strclr.o ft_strdel.o \
+ft_strequ.o ft_striter.o ft_striteri.o ft_strjoin.o ft_strlen.o ft_strmap.o \
+ft_strmapi.o ft_strnequ.o ft_strnew.o ft_strsplit.o ft_strsub.o ft_strtrim.o
+OBJ_HEADER = ft_bzero.o ft_memalloc.o ft_putendl_fd.o ft_putendl.o \
+ft_putnbr_fd.o ft_putnbr.o ft_putstr_fd.o ft_putstr.o ft_strdel.o ft_strjoin.o \
+ft_strmap.o ft_strmapi.o ft_strnew.o ft_strsplit.o ft_strtrim.o
 
-FLAGS = -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 vpath %.c sources
 
@@ -24,26 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
 
-ft_memset.o: ft_memset.c $(HEADER)
-	gcc -c $(FLAGS) ft_memset.c
-
-ft_bzero.o: ft_bzero.c $(HEADER)
-	gcc -c $(FLAGS) ft_bzero.c
-
-ft_strlen.o: ft_strlen.c
-	gcc -c $(FLAGS) ft_strlen.c
-
-ft_putchar.o: ft_putchar.c
-	gcc -c $(FLAGS) ft_putchar.c
-
-ft_putstr.o: ft_putstr.c $(HEADER)
-	gcc -c $(FLAGS) ft_putstr.c
-
-ft_putendl.o: ft_putendl.c $(HEADER)
-	gcc -c $(FLAGS) ft_putendl.c
-
-ft_putnbr.o: ft_putnbr.c $(HEADER)
-	gcc -c $(FLAGS) ft_putnbr.c
+$(OBJ_HEADER): $(HEADER)
 
 clean:
 	rm -f *~ *~ *.o

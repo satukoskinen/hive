@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 13:52:25 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:39:28 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/07 18:49:25 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/07 20:43:49 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	free(*ap);
-	*ap = NULL;
+	int i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }
