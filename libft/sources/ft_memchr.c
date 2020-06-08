@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 21:16:16 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 10:14:47 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 09:58:30 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/08 10:12:43 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
 	void	*p;
 
-	i = 0;
-	p = dst;
-	while (i < n)
+	p = (void*)s;
+	while (n > 0)
 	{
-		((char*)dst)[i] = ((char*)src)[i];
-		if (((char*)src)[i] == (unsigned char)c)
-			return (p++);
-		i++;
-		p++;
+		if (*(char*)p++ == (unsigned char)c)
+			return (p);
+		n++;
 	}
 	return (NULL);
 }

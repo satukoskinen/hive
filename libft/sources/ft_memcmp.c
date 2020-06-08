@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 21:16:16 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 10:14:47 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 10:18:32 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/08 10:28:54 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	void	*p;
+	int i;
 
 	i = 0;
-	p = dst;
-	while (i < n)
-	{
-		((char*)dst)[i] = ((char*)src)[i];
-		if (((char*)src)[i] == (unsigned char)c)
-			return (p++);
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && ((char*)s1)[i] == ((char*)s2)[i])
 		i++;
-		p++;
-	}
-	return (NULL);
+	return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
 }
