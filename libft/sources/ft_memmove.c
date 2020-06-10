@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 09:25:16 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 09:49:55 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/08 12:25:28 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char 	temp[len];
-	
+	char	temp[len];
+
 	ft_memcpy(temp, src, len);
 	ft_memcpy(dst, temp, len);
 	return (dst);

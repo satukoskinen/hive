@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:34:54 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 12:26:23 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/08 12:46:56 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strequ(char const *s1, char const *s2)
-{
-	int i;
+#include "../libft.h"
+#include <string.h>
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	if (s1[i] != s2[i])
-		return (0);
-	return (1);
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+
+	if (!(s2 = ft_memalloc(ft_strlen(s1) + 1)))
+		return (NULL);
+	return (ft_memcpy(s2, s1, ft_strlen(s1) + 1));
 }

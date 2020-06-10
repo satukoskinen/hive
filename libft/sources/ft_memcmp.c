@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 10:18:32 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 10:28:54 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/08 12:24:59 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	if (n == 0)

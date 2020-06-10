@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:34:54 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 13:48:31 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/08 14:24:40 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strequ(char const *s1, char const *s2)
-{
-	int i;
+#include "../libft.h"
+#include <string.h>
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	if (s1[i] != s2[i])
-		return (0);
-	return (1);
+char	*ft_strchr(const char *s, int c)
+{
+	return (ft_memchr(s, c, ft_strlen(s) + 1));
 }

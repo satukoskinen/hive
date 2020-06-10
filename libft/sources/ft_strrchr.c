@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:34:54 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 14:03:40 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/08 14:23:26 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strequ(char const *s1, char const *s2)
-{
-	int i;
+#include "../libft.h"
+#include <string.h>
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	if (s1[i] != s2[i])
-		return (0);
-	return (1);
+char	*ft_strrchr(const char *s, int c)
+{
+	int	s_len;
+
+	s_len = ft_strlen(s);
+	while (s_len >= 0)
+	{
+		if (s[s_len] == c)
+			return (&s[s_len]);
+		s_len--;
+	}
+	return (NULL);
 }

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:34:54 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/09 15:58:02 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/09 16:01:03 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strequ(char const *s1, char const *s2)
+int		ft_isascii(int c)
 {
-	int i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	if (s1[i] != s2[i])
-		return (0);
-	return (1);
+	if (c >= 0 && c <= 177)
+		return (1);
+	return (0);
 }

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:34:54 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 15:41:14 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/08 15:50:51 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strequ(char const *s1, char const *s2)
+#include <string.h>
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n && s1[i] == s2[i])
 		i++;
-	if (s1[i] != s2[i])
+	if (i == n)
 		return (0);
-	return (1);
+	return (s1[i] - s2[i]);
 }

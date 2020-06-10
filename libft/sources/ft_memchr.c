@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 09:58:30 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 10:12:43 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/08 14:15:24 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	p = (void*)s;
 	while (n > 0)
 	{
-		if (*(char*)p++ == (unsigned char)c)
+		if (*(char*)p == (unsigned char)c)
 			return (p);
-		n++;
+		n--;
+		p++;
 	}
 	return (NULL);
 }

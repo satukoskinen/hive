@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:31:44 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:34:54 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 14:25:56 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/09 11:47:11 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strequ(char const *s1, char const *s2)
+#include <string.h>
+
+char	*ft_strstr(const char *haystack, const char *needle)
 {
 	int i;
+	int j;
 
+	if (needle[0] == '\0')
+		return ((char*)haystack);
 	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	while (haystack[i] != '\0')
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && needle[j] != '\0')
+			j++;
+		if (needle[j] == '\0')
+			return ((char*)&haystack[i]);
 		i++;
-	if (s1[i] != s2[i])
-		return (0);
-	return (1);
+	}
+	return (NULL);
 }
