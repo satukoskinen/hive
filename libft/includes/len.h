@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   len.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 12:48:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 14:24:29 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/10 14:20:02 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/10 14:20:42 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/len.h"
-#include "../includes/mems.h"
+#ifndef LEN_H
+# define LEN_H
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
-}
+#include <string.h>
+
+size_t  ft_strlen(const char *s);
+
+#endif

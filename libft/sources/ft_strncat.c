@@ -6,11 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:20:52 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 13:46:57 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:27:03 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/len.h"
+#include "../includes/mems.h"
 #include <string.h>
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)

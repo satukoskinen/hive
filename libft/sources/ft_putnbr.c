@@ -6,11 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 09:38:51 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/06 13:39:56 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:18:43 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/puts.h"
 
 void	ft_putnbr(int n)
 {

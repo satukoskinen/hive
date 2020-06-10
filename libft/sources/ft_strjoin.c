@@ -6,11 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:43:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:44:46 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:25:53 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/len.h"
 #include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)

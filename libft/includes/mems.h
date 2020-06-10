@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   mems.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 12:48:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 14:24:29 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/10 14:09:58 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/10 14:34:00 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/len.h"
-#include "../includes/mems.h"
+#ifndef MEMS_H
+# define MEMS_H
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
-}
+# include <string.h>
+
+void	*ft_memalloc(size_t size);
+void    *ft_memset(void *b, int c, size_t len);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+
+#endif

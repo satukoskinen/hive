@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 15:21:10 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:46:16 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:26:21 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../libft.h"
+#include "../includes/len.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

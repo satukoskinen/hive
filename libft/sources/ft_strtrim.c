@@ -6,11 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:56:33 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:46:24 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:32:02 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/strsub.h"
+#include "../includes/len.h"
 
 char	*ft_strtrim(char const *s)
 {

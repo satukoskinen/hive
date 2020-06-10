@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:48:31 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 14:24:40 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:22:57 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include <string.h>
+#include "../includes/len.h"
+#include "../includes/mems.h"
 
 char	*ft_strchr(const char *s, int c)
 {

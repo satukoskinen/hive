@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   strsub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 12:48:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 14:24:29 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/10 14:30:32 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/10 14:31:10 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/len.h"
-#include "../includes/mems.h"
+#ifndef STRSUB_H
+# define STRSUB_H
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
-}
+#include <string.h>
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+
+#endif

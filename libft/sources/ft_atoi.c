@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 15:54:05 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/09 14:37:49 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 10:11:54 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	ft_isspace(int c)
 
 int			ft_atoi(const char *str)
 {
-	long int i;
-	int sign;
-	int result;
+	long int	i;
+	int			sign;
+	int			result;
 
 	i = 0;
 	sign = 1;

@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   puts.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 12:48:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 14:24:29 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/10 14:15:36 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/10 14:49:13 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/len.h"
-#include "../includes/mems.h"
+#ifndef PUTS_H
+# define PUTS_H
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
-}
+void	ft_putchar_fd(char c, int fd);
+void	ft_putchar(char c);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putstr(char const *s);
+
+#endif

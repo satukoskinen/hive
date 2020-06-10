@@ -6,11 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 18:51:00 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 18:51:47 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:16:51 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/puts.h"
 
 void	ft_putendl_fd(char const *s, int fd)
 {

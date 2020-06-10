@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 15:12:01 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:46:08 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:26:14 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../libft.h"
+#include "../includes/len.h"
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {

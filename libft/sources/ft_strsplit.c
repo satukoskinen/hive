@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 17:16:18 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:53:29 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 14:30:21 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../libft.h"
+#include "../includes/strsub.h"
 
 static int	ft_count_strings(char const *s, char c)
 {
