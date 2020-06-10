@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 12:57:04 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 14:01:52 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/10 15:21:17 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putchar(char c);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putendl(char const *s);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr(int n);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putstr(char const *s);
 char    *ft_strcat(char *s1, const char *s2);
