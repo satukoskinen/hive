@@ -1,7 +1,8 @@
-#norminette -R CheckForbiddenSourceHeader | grep -E '^(Error|Warning)'
+norminette -R CheckForbiddenSourceHeader | grep -E '^(Error|Warning)'
 #make clean && make && make fclean && make && make clean
-for test in p1_tests
+for test in p1_tests/*.c
 do
-    gcc -Wall -Wextra -Werror p1_tests/${test} -L. -lft
-    ./a.out
+	echo "Testing ${test}:"
+	gcc -Wall -Wextra -Werror ${test} -L. -lft -o user_exe
+    diff test_exe user_exe | cat -e
 done

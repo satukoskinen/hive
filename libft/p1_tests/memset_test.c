@@ -1,7 +1,8 @@
 #include "../libft.h"
 #include <string.h>
+#include <stdlib.h>
 
-int main(void)
+void	memset_test(void)
 {
     char *str1 = ft_memalloc(10);
     char *str2 = ft_memalloc(10);
@@ -21,4 +22,7 @@ int main(void)
     ft_putchar('\n');
     for (int i = 0; i < 5; i++)
         ft_putnbr(i2[i]);
+	ft_putchar('\n');
+	free(str1);
+	free(str2);
 }

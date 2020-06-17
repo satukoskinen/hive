@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 21:16:16 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 10:14:47 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:49:16 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		((char*)dst)[i] = ((char*)src)[i];
 		if (((char*)src)[i] == (unsigned char)c)
-			return (p++);
+			return (++p);
 		i++;
 		p++;
 	}
