@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 15:41:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/08 15:50:51 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/17 16:27:12 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	if (i == n)
 		return (0);
-	return (s1[i] - s2[i]);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

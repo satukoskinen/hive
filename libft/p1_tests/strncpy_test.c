@@ -13,14 +13,14 @@ int		strncpy_test(void)
 	char *ret1 = ft_strncpy(dst1, src1, 6);
 	char *ret2 = strncpy(dst2, src1, 6);
 
-	if (memcmp(ret1, ret2, 7) == 0)
+	if (strcmp(ret1, ret2) == 0)
 	{
-		ft_putstr("1 ok");
+		ft_putstr("1 ok\n");
 		tests_passed++;
 	}
-	if (memcmp(dst1, dst2, 7) == 0)
+	if (strcmp(dst1, dst2) == 0)
 	{
-		ft_putstr("2 ok");
+		ft_putstr("2 ok\n");
 		tests_passed++;
 	}
 	free(dst1);
@@ -32,12 +32,12 @@ int		strncpy_test(void)
 	ret2 = strncpy(dst2, src1, 10);
 	if (memcmp(ret1, ret2, 10) == 0)
 	{
-		ft_putstr("3 ok");
+		ft_putstr("3 ok\n");
 		tests_passed++;
 	}
 	if (memcmp(dst1, dst2, 10) == 0)
 	{
-		ft_putstr("4 ok");
+		ft_putstr("4 ok\n");
 		tests_passed++;
 	}
 	free(dst1);
@@ -49,12 +49,12 @@ int		strncpy_test(void)
 	ret2 = strncpy(dst2, src1, 15);
 	if (memcmp(ret1, ret2, 10) == 0)
 	{
-		ft_putstr("5 ok");
+		ft_putstr("5 ok\n");
 		tests_passed++;
 	}
 	if (memcmp(dst1, dst2, 10) == 0)
 	{
-		ft_putstr("6 ok");
+		ft_putstr("6 ok\n");
 		tests_passed++;
 	}
 	free(dst1);

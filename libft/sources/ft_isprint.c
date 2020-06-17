@@ -6,13 +6,13 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 16:01:18 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/09 16:07:46 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/17 17:58:03 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isprint(int c)
 {
-	if (c >= 40 && c <= 176)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }

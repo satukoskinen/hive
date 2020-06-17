@@ -1,0 +1,48 @@
+#include <ctype.h>
+#include "../libft.h"
+
+int isalnum_test(void)
+{
+    int tests_passed = 0;
+    char c = 0;
+
+    while (c <= 126)
+    {
+        if (c < '0' && ft_isalnum(c) == 0 && isalnum(c) == 0)
+            tests_passed++;
+        else if (c <= '9' && ft_isalnum(c) > 0 && isalnum(c) > 0)
+            tests_passed++;
+        else if (c < 'A' && ft_isalnum(c) == 0 && isalnum(c) == 0)
+            tests_passed++;
+        else if (c <= 'Z' && ft_isalnum(c) > 0 && isalnum(c) > 0)
+            tests_passed++;
+        else if (c < 'a' && ft_isalnum(c) == 0 && isalnum(c) == 0)
+            tests_passed++;
+        else if (c <= 'z' && ft_isalnum(c) > 0 && isalnum(c) > 0)
+            tests_passed++;
+        else if (c > 'z' && ft_isalnum(c) == 0 && isalnum(c) == 0)
+            tests_passed++;
+        else
+        {
+            ft_putstr("ERROR\n");
+            ft_putchar(c);
+        }
+        c++;
+    }
+    if (ft_isalnum(127) == 0 && isalnum(127) == 0)
+        tests_passed++;
+    else
+        ft_putstr("ERROR\n");
+    if (ft_isalnum(128) == 0 && isalnum(128) == 0)
+        tests_passed++;
+    else
+        ft_putstr("ERROR 1");
+    if (ft_isalnum(-1) == 0 && isalnum(-1) == 0)
+        tests_passed++;
+    else
+        ft_putstr("ERROR 2");
+
+    if (tests_passed == 128)
+        return (1);
+    return (0);
+}

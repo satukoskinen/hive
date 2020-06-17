@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:20:52 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 14:27:03 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/17 10:45:40 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (n < s1_len)
+	if (s2_len > n)
 	{
 		ft_memcpy(&s1[s1_len], s2, n);
 		s1[s1_len + n] = '\0';

@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/09 15:58:02 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/17 17:46:56 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/17 11:53:45 by skoskine          #+#    #+#             */
+/*   Updated: 2020/06/17 12:07:14 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isascii(int c)
+#include <string.h>
+#include "../includes/len.h"
+
+size_t  ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+    size_t dst_len;
+    size_t i;
+
+    dst_len = ft_strlen(dst);
+    i = 0;
+
+    while (i < dstsize - dst_len - 1)    
+    {
+        dst[dst_len + i] = src[i];
+        i++;
+    }
+    if (i != 0)
+        dst[dst_len + i] = '\0';
+    return (dst_len + ft_strlen(src));
 }

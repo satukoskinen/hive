@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 12:57:04 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 15:21:17 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/17 12:18:53 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_strequ(char const *s1, char const *s2);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(char const *s1, char const *s2);
+size_t  ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t  ft_strlen(const char *s);
 char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
