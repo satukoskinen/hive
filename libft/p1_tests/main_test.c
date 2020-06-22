@@ -60,7 +60,7 @@ int main(void)
 	tests_run++;
 
 	printf("\nPart 1: tests passed: %d out of %d\n", tests_passed, tests_run);
-	while (1)
-		;
-	return (0);
+/*	while (1)
+**		;
+*/	return (0);
 }
