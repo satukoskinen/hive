@@ -6,7 +6,7 @@
 #    By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/05 13:58:06 by skoskine          #+#    #+#              #
-#    Updated: 2020/06/19 14:57:58 by skoskine         ###   ########.fr        #
+#    Updated: 2020/06/22 14:38:31 by skoskine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ vpath %.h includes
 all: $(NAME)
 
 $(NAME): $(PART1_SRCS) $(PART2_SRCS)
-	$(CC) $(CFLAGS) -c $^
-	ar rc $@ $(PART1_SRCS:.c=.o) $(PART2_SRCS:.c=.o)
+	@$(CC) $(CFLAGS) -c $^
+	@ar rc $@ $(PART1_SRCS:.c=.o) $(PART2_SRCS:.c=.o)
 
 $(MEMS_SRCS): mems.h
 
@@ -53,10 +53,10 @@ $(LEN_SRCS): len.h
 $(STRSUB_SRCS): strsub.h
 
 clean:
-	rm -f */*~ *~ *.o
+	@rm -f */*~ *~ *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

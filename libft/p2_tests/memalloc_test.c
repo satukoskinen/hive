@@ -36,7 +36,7 @@ int memalloc_test(void)
 	free(mem1);
     if (tests_passed == 2)
 	{
-		printf(" OK\n");
+		printf("\tOK\n");
 		return (1);
 	}
     return (0);

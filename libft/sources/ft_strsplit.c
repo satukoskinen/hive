@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 17:16:18 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/10 14:30:21 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/22 16:15:07 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,41 @@ static int	ft_count_strings(char const *s, char c)
 	return (string_count);
 }
 
+static void	ft_free_array(char **arr, int size)
+{
+	while (size > 0)
+	{
+		free(arr[size - 1]);
+		size--;
+	}
+	free(arr);
+}
+
 char		**ft_strsplit(char const *s, char c)
 {
-	char	**strings;
-	int		string_count;
+	char	**arr;
 	int		i;
 	int		j;
-	int		str_end;
+	int		len;
 
-	string_count = ft_count_strings(s, c);
-	if (!(strings = (char**)malloc(sizeof(*strings) * (string_count + 1))))
+	if (!(arr = (char**)malloc(sizeof(*arr) * (ft_count_strings(s, c) + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (j < string_count)
+	while (j <= ft_count_strings(s, c))
 	{
 		while (s[i] == c)
 			i++;
-		str_end = i;
-		while (s[str_end] != c && s[str_end] != '\0')
-			str_end++;
-		strings[j] = ft_strsub(s, i, str_end - i);
+		len = 0;
+		while (s[i + len] != c && s[i + len] != '\0')
+			len++;
+		if (!(arr[j] = ft_strsub(s, i, len)))
+		{
+			ft_free_array(arr, j - 1);
+			return (NULL);
+		}
+		i += len;
 		j++;
 	}
-	strings[j] = 0;
-	return (strings);
+	return (arr);
 }

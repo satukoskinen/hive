@@ -6,12 +6,13 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 18:10:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/07 20:53:56 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/22 17:42:12 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 static int	ft_number_length(int n)
 {
@@ -28,17 +29,25 @@ static int	ft_number_length(int n)
 	return (length);
 }
 
-static char	ft_next_digit(int n, int i)
+static int	ft_abs(int n)
 {
-	int div;
+	if (n >= 0)
+		return (n);
+	else
+		return (-n);
+}
 
-	div = 1;
-	while (i > 1)
+static int	ft_power(int base, int power)
+{
+	int result;
+
+	result = 1;
+	while (power > 0)
 	{
-		div *= 10;
-		i--;
+		result *= base;
+		power--;
 	}
-	return (n / div);
+	return (result);
 }
 
 char		*ft_itoa(int n)
@@ -46,6 +55,7 @@ char		*ft_itoa(int n)
 	char	*str;
 	int		i;
 	int		length;
+	int		div;
 
 	i = 0;
 	length = ft_number_length(n);
@@ -55,11 +65,15 @@ char		*ft_itoa(int n)
 	{
 		str[i] = '-';
 		i++;
+		length--;
 	}
-	while (i < length)
+	while (length > 0)
 	{
-		str[i] = ft_next_digit(n, length - i);
+		div = ft_power(10, length - 1);
+		str[i] = ft_abs(n / div) + 48;
+		n %= div;
 		i++;
+		length--;
 	}
 	str[i] = '\0';
 	return (str);
