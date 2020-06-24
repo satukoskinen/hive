@@ -50,7 +50,7 @@ int     itoa_test(void)
 
     if (tests_passed == 6)
     {
-        printf("\tOK \n");
+        printf("\tOK\n");
         return (1);
     }
     return (0);

@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdio.h>
 #include "../libft.h"
 
 int isprint_test(void)
@@ -13,24 +14,21 @@ int isprint_test(void)
         else if (c <= 126 && ft_isprint(c) > 0 && isprint(c) > 0)
             tests_passed++;
         else
-        {
-            ft_putstr("ERROR\n");
-            ft_putchar(c);
-        }
+			printf("\nERROR: %c", c);
         c++;
     }
     if (ft_isprint(127) == 0 && isprint(127) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR\n");
+        printf("\nERROR: 127");
     if (ft_isprint(128) == 0 && isprint(128) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR 1");
+        printf("\nERROR: 128");
     if (ft_isprint(-1) == 0 && isprint(-1) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR 2");
+        printf("\nERROR: -1");
 
     if (tests_passed == 130)
         return (1);

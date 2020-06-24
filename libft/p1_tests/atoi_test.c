@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "../libft.h"
 
 int atoi_test(void)
@@ -9,63 +10,66 @@ int atoi_test(void)
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('40002') != atoi('40002')\n%d", ft_atoi("40002"));
     }
     if (ft_atoi("  0050") == atoi("  0050"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('  0050') != atoi('  0050')\n%d", ft_atoi("  0050"));
     }
     if (ft_atoi("42school") == atoi("42school"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('42school') != atoi('42school')\n%d", ft_atoi("42school"));
     }
     if (ft_atoi("school42") == atoi("school42"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('school42') != atoi('school42')\n%d", ft_atoi("school42"));
     }
     if (ft_atoi("\t\n\v\f\r 42") == atoi("\t\n\v\f\r 42"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('\t\n\v\f\r 42') != atoi('\t\n\v\f\r 42')\n%d", ft_atoi("\t\n\v\f\r 42"));
     }
     if (ft_atoi("2147483647 1") == atoi("2147483647 1"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('2147483647 1') != atoi('2147483647 1')\n%d", ft_atoi("2147483647 1"));
     }
     if (ft_atoi("-2147483648") == atoi("-2147483648"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('-2147483648') != atoi('-2147483648')\n%d", ft_atoi("-2147483648"));
     }
     if (ft_atoi("+-2") == atoi("+-2"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('+-2') != atoi('+-2')\n%d", ft_atoi("+-2"));
     }
     if (ft_atoi("-+2") == atoi("-+2"))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('-+2') != atoi('-+2')\n%d", ft_atoi("-+2"));
     }
     if (ft_atoi("") == atoi(""))
         tests_passed++;
     else
     {
-        ft_putstr("ERROR\n");
+        printf("\nERROR: ft_atoi('') != atoi(')\n%d", ft_atoi(""));
     }
     if (tests_passed == 10)
+	{
+		printf("\tOK\n");
         return (1);
+	}
     return (0);
 }

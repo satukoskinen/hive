@@ -6,7 +6,7 @@
 #    By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/05 13:58:06 by skoskine          #+#    #+#              #
-#    Updated: 2020/06/22 14:38:31 by skoskine         ###   ########.fr        #
+#    Updated: 2020/06/23 21:09:06 by skoskine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ft_strlcat.c ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncpy.c ft_strrchr.c \
 ft_strtrim.c
 STRSUB_SRCS = ft_strsplit.c ft_strtrim.c
 PART1_TESTS = $(wildcard p1_tests/*.c)
-PART2_TESTS = $(wildcard p2_tests/*.c)
+PART2_TESTS = $(wildcard p2_tests/[^p]*.c)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -61,13 +61,18 @@ fclean: clean
 re: fclean all
 
 test_part1: $(NAME) $(PART1_TESTS)
-#	norminette -R CheckForbiddenSourceHeader
+	@~/.norminette/norminette.rb -R CheckForbiddenSourceHeader $(PART1_SRCS:%=sources/%)
 	@$(CC) $(CFLAGS) -o $@ -L. -lft $(PART1_TESTS)
-	./$@
+	@echo "\nPART 1 tests:\n"
+	@./$@
+	@rm $@
 
 test_part2: $(NAME) $(PART2_TESTS)
-#	norminette -R CheckForbiddenSourceHeader
+	@~/.norminette/norminette.rb -R CheckForbiddenSourceHeader $(PART2_SRCS:%=sources/%)
 	@$(CC) $(CFLAGS) -o $@ -L. -lft $(PART2_TESTS)
-	./$@
+	@echo "\nPART 2 tests:\n"
+	@./$@
+	@./p2_tests/put_tests.sh
+	@rm $@
 
 .PHONY: all re clean fclean

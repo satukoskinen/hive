@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdio.h>
 #include "../libft.h"
 
 int isascii_test(void)
@@ -11,17 +12,17 @@ int isascii_test(void)
         if (ft_isascii(c) > 0 && isascii(c) > 0)
             tests_passed++;
         else
-            ft_putstr("ERROR");
+			printf("\nERROR: %c", c);
         c++;
     }
     if (ft_isascii(128) == 0 && isascii(128) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR 1");
+			printf("\nERROR: 128");
     if (ft_isascii(-1) == 0 && isascii(-1) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR 2");
+			printf("\nERROR: -1");
 
     if (tests_passed == 130)
         return (1);

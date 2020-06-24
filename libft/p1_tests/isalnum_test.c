@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdio.h>
 #include "../libft.h"
 
 int isalnum_test(void)
@@ -23,24 +24,21 @@ int isalnum_test(void)
         else if (c > 'z' && ft_isalnum(c) == 0 && isalnum(c) == 0)
             tests_passed++;
         else
-        {
-            ft_putstr("ERROR\n");
-            ft_putchar(c);
-        }
+			printf("\nERROR: %c", c);
         c++;
     }
     if (ft_isalnum(127) == 0 && isalnum(127) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR\n");
+        printf("\nERROR: 127");
     if (ft_isalnum(128) == 0 && isalnum(128) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR 1");
+        printf("\nERROR: 128");
     if (ft_isalnum(-1) == 0 && isalnum(-1) == 0)
         tests_passed++;
     else
-        ft_putstr("ERROR 2");
+        printf("\nERROR: -1");
 
     if (tests_passed == 128)
         return (1);
