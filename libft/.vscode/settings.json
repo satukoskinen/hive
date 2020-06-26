@@ -1,6 +1,7 @@
 {
 	"window.autoDetectColorScheme": true,
 	"files.associations": {
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"libft.h": "c"
 	}
 }
