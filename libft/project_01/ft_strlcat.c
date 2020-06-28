@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:53:45 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/24 16:57:24 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:34:34 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "includes/len.h"
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

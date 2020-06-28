@@ -6,11 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 15:54:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 20:47:43 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:40:04 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lst.h"
+#include "libft.h"
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {

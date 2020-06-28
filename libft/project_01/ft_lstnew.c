@@ -6,12 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 09:20:27 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 20:47:33 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:40:42 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lst.h"
-#include "includes/mems.h"
+#include "libft.h"
 #include <stdlib.h>
 
 t_list	*ft_lstnew(void const *content, size_t content_size)

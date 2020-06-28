@@ -6,15 +6,21 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:08:01 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 20:48:37 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 21:35:47 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lst.h"
+#include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+static void	ft_free_list(t_list **new)
+{
+	free((*new)->content);
+	free(*new);
+	*new = NULL;
+}
+
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list *new;
 
@@ -22,6 +28,10 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	if (new == NULL)
 		return (NULL);
 	if (lst->next != NULL)
+	{
 		new->next = ft_lstmap(lst->next, f);
+		if (new->next == NULL)
+			ft_free_list(&new);
+	}
 	return (new);
 }

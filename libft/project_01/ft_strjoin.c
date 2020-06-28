@@ -6,19 +6,19 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:43:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 18:46:36 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:38:52 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/len.h"
+#include "libft.h"
 #include <string.h>
 #include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
-	size_t		i;
-	size_t		j;
+	size_t	i;
+	size_t	j;
 
 	if (!(dest = (char*)malloc(sizeof(*dest) *
 	(ft_strlen(s1) + ft_strlen(s2) + 1))))

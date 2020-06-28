@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 14:49:36 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/24 16:57:49 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:39:28 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "includes/mems.h"
+#include "libft.h"
 
 char	*ft_strnew(size_t size)
 {

@@ -6,11 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 15:54:05 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 18:37:04 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:33:11 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/space.h"
+#include "libft.h"
 
 int			ft_atoi(const char *str)
 {

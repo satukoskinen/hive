@@ -6,12 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 12:54:27 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/24 16:57:45 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:34:52 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/len.h"
-#include "includes/mems.h"
+#include "libft.h"
 #include <string.h>
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)

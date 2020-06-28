@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 15:13:01 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 18:44:20 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/28 14:36:42 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "includes/puts.h"
+#include <unistd.h>
 
 void	ft_putstr(char const *s)
 {
@@ -20,7 +20,7 @@ void	ft_putstr(char const *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		ft_putchar(s[i]);
+		write(1, &s[i], 1);
 		i++;
 	}
 }
