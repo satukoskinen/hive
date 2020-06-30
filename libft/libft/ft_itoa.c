@@ -6,10 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 18:10:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/24 16:55:02 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/06/30 09:39:38 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -26,27 +27,6 @@ static int	ft_number_length(int n)
 		n /= 10;
 	}
 	return (length);
-}
-
-static int	ft_abs(int n)
-{
-	if (n >= 0)
-		return (n);
-	else
-		return (-n);
-}
-
-static int	ft_power(int base, int power)
-{
-	int result;
-
-	result = 1;
-	while (power > 0)
-	{
-		result *= base;
-		power--;
-	}
-	return (result);
 }
 
 char		*ft_itoa(int n)
