@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 21:15:26 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/01 19:14:21 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/01 20:04:18 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
 # define BUFF_SIZE 8
 

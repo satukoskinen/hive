@@ -6,12 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 21:15:32 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:42 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/01 20:04:22 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft/libft.h"
 
 /*
 **	Returns a line (succession of characters that end with '\n' or EOF) read
