@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:43:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:38:52 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/01 12:06:34 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,22 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
-	size_t	i;
-	size_t	j;
+	char	*p;
 
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	if (s1 == NULL && s2 != NULL)
+		return (ft_strdup(s2));
+	if (s1 != NULL && s2 == NULL)
+		return (ft_strdup(s1));
 	if (!(dest = (char*)malloc(sizeof(*dest) *
 	(ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		dest[i] = s2[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
+	p = dest;
+	while (*s1 != '\0')
+		*p++ = *s1++;
+	while (*s2 != '\0')
+		*p++ = *s2++;
+	*p = '\0';
 	return (dest);
 }
