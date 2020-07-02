@@ -6,7 +6,7 @@
 #    By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/05 13:58:06 by skoskine          #+#    #+#              #
-#    Updated: 2020/07/01 15:35:57 by skoskine         ###   ########.fr        #
+#    Updated: 2020/07/01 20:31:40 by skoskine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ ft_strncpy.c ft_strnew.c ft_putendl_fd.c ft_putendl.c ft_putnbr_fd.c \
 ft_putnbr.c ft_putstr_fd.c ft_putstr.c ft_strjoin.c ft_strlcat.c ft_strmap.c \
 ft_strmapi.c ft_strrchr.c ft_strtrim.c ft_strsplit.c ft_strtrim.c ft_atoi.c \
 ft_atoi_base.c ft_itoa.c ft_itoa_base.c
+HEADER_DIR = includes/
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -39,10 +40,10 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	@$(CC) $(CFLAGS) -c $^
+	@$(CC) $(CFLAGS) -c $^ -I $(HEADER_DIR)
 	@ar rc $@ $(SRCS:.c=.o)
 
-$(LIBFT_SRCS): libft.h
+$(LIBFT_SRCS): $(HEADER_DIR)libft.h
 
 clean:
 	@rm -f */*~ *~ $(SRCS:.c=.o)

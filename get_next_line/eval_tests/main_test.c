@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/01 19:40:34 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/02 08:40:11 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 int		main(int argc, char **argv)
 {
 	char	*line;
-	int		ret;
-	int		i;
-	int		fd;
+	int		ret, i, fd;
+	int		fds[argc];
 
 	i = 1;
 	fd = STDIN_FILENO;
@@ -37,13 +36,12 @@ int		main(int argc, char **argv)
 		printf("%d $%s$\n", ret, line);
 		free(line);
 		line = NULL;
-	}
+	}	
+
 	while (i < argc)
 	{
 		printf("Reading from argv[%d]:\n", i);
 		fd = open(argv[i], O_RDONLY);
-//		if (fd == -1)
-//			printf("open failed\n");
 		ret = get_next_line(fd, &line);
 		while (ret == 1)
 		{
@@ -58,6 +56,25 @@ int		main(int argc, char **argv)
 		close(fd);
 		i++;
 	}
+
+	i = 1;
+	while (i < argc)
+	{
+		fds[i] = open(argv[i], O_RDONLY);
+		i++;
+	}
+	ret = 1;
+	while (ret != 0)
+	{
+		for (int i = 1; i < argc; i++)
+		{
+			ret = get_next_line(fds[i], &line);
+			printf("argv[%d]: $%s$\n", i, line);
+			free(line);
+			line = NULL;
+		}
+	}
+
 //	while (1)
 //		;
 	return (0);

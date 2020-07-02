@@ -6,11 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 21:15:32 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/01 20:04:22 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/02 08:48:02 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 /*
 **	Returns a line (succession of characters that end with '\n' or EOF) read
@@ -60,6 +61,8 @@ int		get_next_line(const int fd, char **line)
 	char		*p;
 	static char	*remainder;
 
+//	printf("line: $%s$\n", *line);
+//	printf("rem: $%s$\n", remainder);
 	ft_memset(buf, 0, BUFF_SIZE + 1);
 	if (ft_check_remainder(&remainder, line) == 1)
 		return (1);
