@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/02 08:40:11 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:47:24 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 {
 	char	*line;
 	int		ret, i, fd;
-	int		fds[argc];
+//	int		fds[argc];
 
 	i = 1;
 	fd = STDIN_FILENO;
@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 		close(fd);
 		i++;
 	}
-
+/*
 	i = 1;
 	while (i < argc)
 	{
@@ -74,8 +74,8 @@ int		main(int argc, char **argv)
 			line = NULL;
 		}
 	}
-
-//	while (1)
-//		;
+*/
+	while (1)
+		;
 	return (0);
 }

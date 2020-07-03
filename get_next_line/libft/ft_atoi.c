@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 15:54:05 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:33:11 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/03 13:39:25 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_atoi(const char *str)
 {
-	long int	i;
+	int	i;
 	int			sign;
 	int			result;
 
@@ -30,10 +30,10 @@ int			ft_atoi(const char *str)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] >= '0' && str[i] < '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + str[i] - 48;
 		i++;
 	}
-	return ((int)(result * sign));
+	return (result * sign);
 }
