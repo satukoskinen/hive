@@ -6,14 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 21:15:26 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/03 18:58:21 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:08:02 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# include "libft.h"
 
 # define BUFF_SIZE 3
 

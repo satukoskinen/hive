@@ -6,76 +6,79 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/03 18:47:24 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:45:08 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 #include <fcntl.h>
+#include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int		main(int argc, char **argv)
 {
 	char	*line;
 	int		ret, i, fd;
-//	int		fds[argc];
+	int		fds[argc];
 
+	line = NULL;
+	ret = 1;
+	fd = 0;
 	i = 1;
-	fd = STDIN_FILENO;
 	if (argc == 1)
 	{
-		printf("Reading from stdin:\n");
-		ret = get_next_line(fd, &line);
+//		printf("Reading from stdin:\n");
 		while (ret == 1)
 		{
-			printf("%d $%s$\n", ret, line);
+			ret = get_next_line(fd, &line);
+			printf("%s\n", line);
 			free(line);
 			line = NULL;
-			ret = get_next_line(fd, &line);
+
 		}
-		printf("%d $%s$\n", ret, line);
-		free(line);
-		line = NULL;
 	}	
 
-	while (i < argc)
+	if (argc == 2)
 	{
-		printf("Reading from argv[%d]:\n", i);
+//		printf("Reading from argv[%d]:\n", i);
 		fd = open(argv[i], O_RDONLY);
-		ret = get_next_line(fd, &line);
 		while (ret == 1)
 		{
-			printf("%d $%s$\n", ret, line);
-			free(line);
-			line = NULL;
 			ret = get_next_line(fd, &line);
-		}
-		printf("%d $%s$\n", ret, line);
-		free(line);
-		line = NULL;
-		close(fd);
-		i++;
-	}
-/*
-	i = 1;
-	while (i < argc)
-	{
-		fds[i] = open(argv[i], O_RDONLY);
-		i++;
-	}
-	ret = 1;
-	while (ret != 0)
-	{
-		for (int i = 1; i < argc; i++)
-		{
-			ret = get_next_line(fds[i], &line);
-			printf("argv[%d]: $%s$\n", i, line);
+			printf("%s", line);
+			if (ret == 1)
+				printf("\n");
 			free(line);
 			line = NULL;
+
+		}
+		close(fd);
+	}
+
+	if (argc > 2)
+	{
+		while (i < argc)
+		{
+			fds[i] = open(argv[i], O_RDONLY);
+			printf("fds %d %d\n", i, fds[i]);
+			i++;
+		}
+		while (ret == 1)
+		{
+			for (int i = 1; i < argc; i++)
+			{
+				ret = get_next_line(fds[i], &line);
+				printf("argv[%d]: $%s$\n", i, line);
+//				if (ret == 1)
+//					printf("\n");
+				free(line);
+				line = NULL;
+			}
 		}
 	}
-*/
-	while (1)
-		;
+//*/
+//	while (1)
+//		;
 	return (0);
 }

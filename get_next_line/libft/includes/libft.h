@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:43:42 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/30 09:38:59 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/03 22:08:23 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+
+int					get_next_line(const int fd, char **line);
 
 #endif

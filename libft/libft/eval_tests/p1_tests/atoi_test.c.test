@@ -16,7 +16,7 @@ int atoi_test(void)
         tests_passed++;
     else
     {
-        printf("\nERROR: ft_atoi('  0050') != atoi('  0050')\n%d\n", ft_atoi("  0050"));
+        printf("\nERROR: ft_atoi('  +00950') != atoi('  +00950')\n%d\n", ft_atoi("  0050"));
     }
     if (ft_atoi("42school") == atoi("42school"))
         tests_passed++;

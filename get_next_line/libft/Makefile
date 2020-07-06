@@ -6,7 +6,7 @@
 #    By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/05 13:58:06 by skoskine          #+#    #+#              #
-#    Updated: 2020/07/02 18:33:52 by skoskine         ###   ########.fr        #
+#    Updated: 2020/07/01 20:31:40 by skoskine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME): $(SRCS)
 	@$(CC) $(CFLAGS) -c $^ -I $(HEADER_DIR)
 	@ar rc $@ $(SRCS:.c=.o)
 
-#$(LIBFT_SRCS): libft.h
+$(LIBFT_SRCS): $(HEADER_DIR)libft.h
 
 clean:
 	@rm -f */*~ *~ $(SRCS:.c=.o)
