@@ -6,22 +6,22 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 21:15:26 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/05 16:08:02 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/06 15:59:39 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 3
+# define BUFF_SIZE 8
 
-typedef struct		r_list
+typedef struct		s_rlist
 {
 	int				fd;
 	char			*remainder;
-	struct r_list	*next;
-}					fd_list;
+	struct s_rlist	*next;
+}					t_rlist;
 
-int				get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/05 16:45:08 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/06 15:26:58 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ int		main(int argc, char **argv)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
-			printf("%s\n", line);
+			printf("$%s$\n", line);
 			free(line);
 			line = NULL;
-
 		}
 	}	
 
@@ -46,7 +45,7 @@ int		main(int argc, char **argv)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
-			printf("%s", line);
+			printf("$%s$", line);
 			if (ret == 1)
 				printf("\n");
 			free(line);
@@ -77,7 +76,7 @@ int		main(int argc, char **argv)
 			}
 		}
 	}
-//*/
+
 //	while (1)
 //		;
 	return (0);

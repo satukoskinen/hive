@@ -6,38 +6,26 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 12:30:58 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/06 10:35:05 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/06 15:59:59 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 /*
-static void		ft_print_remainder(fd_list *r_list)
-{
-	fd_list *p;
-
-	p = r_list;
-	printf("print remainder\n");
-	while (p != 0)
-	{
-		printf(" rem $%s$\n", p->remainder);
-		p = p->next;
-	}
-}
+** Description of ft_delete_remainder
 */
 
-static void	ft_delete_remainder(int fd, fd_list **r_list)
+static void	ft_delete_remainder(int fd, t_rlist **r_list)
 {
-	fd_list	*p;
-	fd_list *temp;
+	t_rlist	*p;
+	t_rlist *temp;
 
 	p = *r_list;
-	if (p != 0 && p->remainder == NULL)
+	if (p != 0 && p->next == NULL && p->fd == fd)
 	{
 		free(*r_list);
 		*r_list = NULL;
@@ -60,11 +48,15 @@ static void	ft_delete_remainder(int fd, fd_list **r_list)
 	}
 }
 
-static int	ft_update_remainder(int fd, char **input, fd_list **r_list)
+/*
+** Description of ft_update_remainder
+*/
+
+static int	ft_update_remainder(int fd, char **input, t_rlist **r_list)
 {
-	fd_list *p;
-	fd_list *prev;
-	
+	t_rlist *p;
+	t_rlist *prev;
+
 	p = *r_list;
 	prev = NULL;
 	while (p != NULL)
@@ -77,7 +69,7 @@ static int	ft_update_remainder(int fd, char **input, fd_list **r_list)
 		prev = p;
 		p = p->next;
 	}
-	if ((p = (fd_list*)malloc(sizeof(fd_list))) == NULL)
+	if ((p = (t_rlist*)malloc(sizeof(t_rlist))) == NULL)
 		return (-1);
 	p->fd = fd;
 	p->remainder = *input;
@@ -89,10 +81,14 @@ static int	ft_update_remainder(int fd, char **input, fd_list **r_list)
 	return (1);
 }
 
+/*
+** Description of ft_add_input
+*/
+
 static char	*ft_add_input(int fd, char **input, char **line)
 {
 	char	*p;
-	char 	*ret;
+	char	*ret;
 	char	*new;
 
 	ret = NULL;
@@ -105,16 +101,18 @@ static char	*ft_add_input(int fd, char **input, char **line)
 	new = ft_strjoin(*line, *input);
 	free(*line);
 	*line = new;
-//	printf("input %p $%s$\n", *input, *input);
-//	printf("p %p $%s$\n", ret, ret);
 	free(*input);
 	*input = NULL;
 	return (ret);
 }
 
-static char	*ft_read_remainder(int fd, fd_list *r_list, char **line)
+/*
+** Description of ft_read_remainder
+*/
+
+static char	*ft_read_remainder(int fd, t_rlist *r_list, char **line)
 {
-	fd_list *p;
+	t_rlist *p;
 	char	*remainder;
 
 	p = r_list;
@@ -130,29 +128,34 @@ static char	*ft_read_remainder(int fd, fd_list *r_list, char **line)
 	return (NULL);
 }
 
+/*
+** Description of get_next_line
+*/
+
 int			get_next_line(const int fd, char **line)
 {
 	int				bytes_read;
 	char			*buf;
-	char			*remainder;
-	static fd_list	*r_list;
+	char			*rem;
+	static t_rlist	*r_list;
 
 	if (fd < 0 || line == NULL || (buf = ft_strnew(BUFF_SIZE + 1)) == NULL)
 		return (-1);
-	if (r_list != NULL && (remainder = ft_read_remainder(fd, r_list, line)) != NULL)
+	if (r_list != NULL && (rem = ft_read_remainder(fd, r_list, line)) != NULL)
 	{
-		if (remainder[0] != '\0')
-			return (ft_update_remainder(fd, &remainder, &r_list));
-		free(remainder);
+		free(buf);
+		if (rem[0] != '\0')
+			return (ft_update_remainder(fd, &rem, &r_list));
+		free(rem);
 		return (1);
 	}
 	bytes_read = read(fd, buf, BUFF_SIZE);
 	buf[bytes_read] = '\0';
-	if ((remainder = ft_add_input(fd, &buf, line)) != NULL)
+	if ((rem = ft_add_input(fd, &buf, line)) != NULL)
 	{
-		if (remainder[0] != '\0')
-			return (ft_update_remainder(fd, &remainder, &r_list));
-		free(remainder);
+		if (rem[0] != '\0')
+			return (ft_update_remainder(fd, &rem, &r_list));
+		free(rem);
 		return (1);
 	}
 	if (bytes_read == BUFF_SIZE)
