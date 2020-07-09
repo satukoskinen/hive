@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/07 08:45:34 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/09 17:04:25 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ int		main(int argc, char **argv)
 	int		ret, i, fd;
 	int		fds[argc];
 
-	line = NULL;
 	ret = 1;
 	fd = 0;
 	i = 1;
+	line = NULL;
 	if (argc == 1)
 	{
 //		printf("Reading from stdin:\n");
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
-			printf("%s", line);
+			if (line != NULL)
+				printf("%s", line);
 			if (ret == 1)
 				printf("\n");
 			free(line);
-			line = NULL;
 		}
 	}	
 
@@ -48,12 +48,11 @@ int		main(int argc, char **argv)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
-			printf("%s", line);
+			if (line != NULL)
+				printf("%s", line);
 			if (ret == 1)
 				printf("\n");
 			free(line);
-			line = NULL;
-
 		}
 		close(fd);
 	}
@@ -73,9 +72,10 @@ int		main(int argc, char **argv)
 				ret = get_next_line(fds[i], &line);
 				printf("argv[%d]: $%s$\n", i, line);
 				free(line);
-				line = NULL;
 			}
 		}
 	}
+//	while (1)
+//		;
 	return (0);
 }
