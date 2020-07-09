@@ -6,14 +6,14 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 21:15:26 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/06 15:59:39 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/07 09:29:34 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 8
+# define BUFF_SIZE 3
 
 typedef struct		s_rlist
 {

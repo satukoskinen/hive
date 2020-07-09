@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/06 15:26:58 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/07 08:45:34 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int		main(int argc, char **argv)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
-			printf("$%s$\n", line);
+			printf("%s", line);
+			if (ret == 1)
+				printf("\n");
 			free(line);
 			line = NULL;
 		}
@@ -42,10 +44,11 @@ int		main(int argc, char **argv)
 	{
 //		printf("Reading from argv[%d]:\n", i);
 		fd = open(argv[i], O_RDONLY);
+//		printf("fd %d\n", fd);
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
-			printf("$%s$", line);
+			printf("%s", line);
 			if (ret == 1)
 				printf("\n");
 			free(line);
@@ -69,15 +72,10 @@ int		main(int argc, char **argv)
 			{
 				ret = get_next_line(fds[i], &line);
 				printf("argv[%d]: $%s$\n", i, line);
-//				if (ret == 1)
-//					printf("\n");
 				free(line);
 				line = NULL;
 			}
 		}
 	}
-
-//	while (1)
-//		;
 	return (0);
 }

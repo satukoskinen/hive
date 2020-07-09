@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 12:30:58 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/06 15:59:59 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/07 09:04:34 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <unistd.h>
 
 /*
-** Description of ft_delete_remainder
+** Deletes the node corresponding to fd from the remainder list. If it is
+** the only node, it is deleted and remainder list is set to NULL.
 */
 
 static void	ft_delete_remainder(int fd, t_rlist **r_list)
@@ -49,7 +50,10 @@ static void	ft_delete_remainder(int fd, t_rlist **r_list)
 }
 
 /*
-** Description of ft_update_remainder
+** Saves the given input to the remainder node corresponding to fd.
+** If no node exists for the fd (or no list has yet been created),
+** that is created and either added to end of existing list or saved
+** as head of a new list.
 */
 
 static int	ft_update_remainder(int fd, char **input, t_rlist **r_list)
@@ -82,82 +86,86 @@ static int	ft_update_remainder(int fd, char **input, t_rlist **r_list)
 }
 
 /*
-** Description of ft_add_input
+** Saves given input to **line, but only until a possible '\n'. If a newline
+** is encountered, the remainder after that is saved to the remainder list.
 */
 
-static char	*ft_add_input(int fd, char **input, char **line)
+static int	ft_add_input(int fd, char **input, t_rlist **r_list, char **line)
 {
 	char	*p;
-	char	*ret;
+	char	*remainder;
 	char	*new;
 
-	ret = NULL;
+	remainder = NULL;
 	p = ft_strchr(*input, '\n');
 	if (p != NULL)
 	{
 		*p = '\0';
-		ret = ft_strdup(p + 1);
+		if (*(p + 1) != '\0')
+			remainder = ft_strdup(p + 1);
 	}
 	new = ft_strjoin(*line, *input);
 	free(*line);
 	*line = new;
 	free(*input);
 	*input = NULL;
-	return (ret);
+	if (remainder != NULL)
+		return (ft_update_remainder(fd, &remainder, r_list));
+	else if (p != NULL)
+		return (1);
+	return (0);
 }
 
 /*
-** Description of ft_read_remainder
+** Checks whether something has been saved as a remainder from a
+** previous call of get_next_line on this fd. If so, that is saved
+** to **line.
 */
 
-static char	*ft_read_remainder(int fd, t_rlist *r_list, char **line)
+static int	ft_read_remainder(int fd, t_rlist *r_list, char **line)
 {
 	t_rlist *p;
-	char	*remainder;
+	int		ret;
 
 	p = r_list;
 	while (p != NULL)
 	{
 		if (p->fd == fd && p->remainder != NULL)
 		{
-			remainder = ft_add_input(fd, &(p->remainder), line);
-			return (remainder);
+			ret = ft_add_input(fd, &(p->remainder), &r_list, line);
+			return (ret);
 		}
 		p = p->next;
 	}
-	return (NULL);
+	return (0);
 }
 
 /*
-** Description of get_next_line
+** Reads a line that ends either with newline '\n' or end-of-file EOF
+** from the file descriptor fd and saves it in pointer to character **line.
+** Possible return values are 1, 0, -1 according to whether a line has been
+**read, reading has been completed (EOF reached) or whether an error occurred.
 */
 
 int			get_next_line(const int fd, char **line)
 {
 	int				bytes_read;
 	char			*buf;
-	char			*rem;
+	int				rem;
 	static t_rlist	*r_list;
 
 	if (fd < 0 || line == NULL || (buf = ft_strnew(BUFF_SIZE + 1)) == NULL)
 		return (-1);
-	if (r_list != NULL && (rem = ft_read_remainder(fd, r_list, line)) != NULL)
+	if (r_list != NULL && (rem = ft_read_remainder(fd, r_list, line)) == 1)
 	{
 		free(buf);
-		if (rem[0] != '\0')
-			return (ft_update_remainder(fd, &rem, &r_list));
-		free(rem);
 		return (1);
 	}
-	bytes_read = read(fd, buf, BUFF_SIZE);
+	if ((bytes_read = read(fd, buf, BUFF_SIZE)) == -1)
+		return (-1);
 	buf[bytes_read] = '\0';
-	if ((rem = ft_add_input(fd, &buf, line)) != NULL)
-	{
-		if (rem[0] != '\0')
-			return (ft_update_remainder(fd, &rem, &r_list));
-		free(rem);
+	if ((rem = ft_add_input(fd, &buf, &r_list, line)) == 1)
 		return (1);
-	}
 	if (bytes_read == BUFF_SIZE)
 		return (get_next_line(fd, line));
 	ft_delete_remainder(fd, &r_list);
