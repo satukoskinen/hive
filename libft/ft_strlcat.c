@@ -6,11 +6,10 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:53:45 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/30 13:36:54 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 17:50:59 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)

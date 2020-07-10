@@ -6,12 +6,11 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 17:16:18 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 17:44:11 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 17:50:20 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <string.h>
 #include "libft.h"
 
 static int		ft_count_strings(char const *s, char c)

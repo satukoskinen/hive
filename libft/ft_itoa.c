@@ -6,13 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 18:10:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/30 09:39:38 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 17:52:15 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <string.h>
 
 static int	ft_number_length(int n)
 {

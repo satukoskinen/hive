@@ -6,12 +6,12 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 12:26:23 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/05 15:46:10 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 17:19:27 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
+#include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {

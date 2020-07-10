@@ -6,11 +6,10 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 09:25:16 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 16:37:26 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 17:51:45 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
