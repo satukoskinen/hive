@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 12:30:58 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 12:48:55 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:14:49 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 /*
 ** Deletes the node corresponding to fd from the remainder list. If it is

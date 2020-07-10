@@ -6,7 +6,7 @@
 #    By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/01 11:20:40 by skoskine          #+#    #+#              #
-#    Updated: 2020/07/10 11:55:28 by skoskine         ###   ########.fr        #
+#    Updated: 2020/07/10 13:35:16 by skoskine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,14 @@ int		main(int argc, char **argv)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
+//			printf("%d	", ret);
 			if (line != NULL)
 				printf("%s", line);
 			if (ret == 1)
 				printf("\n");
 			free(line);
 		}
+//		printf("%d %s\n", ret, line);
 	}	
 
 	if (argc == 2)
@@ -48,12 +50,14 @@ int		main(int argc, char **argv)
 		while (ret == 1)
 		{
 			ret = get_next_line(fd, &line);
+//			printf("%d	", ret);
 			if (line != NULL)
 				printf("%s", line);
 			if (ret == 1)
 				printf("\n");
 			free(line);
 		}
+//		printf("%d %s\n", ret, line);
 		close(fd);
 	}
 
@@ -70,10 +74,12 @@ int		main(int argc, char **argv)
 			for (int i = 1; i < argc; i++)
 			{
 				ret = get_next_line(fds[i], &line);
-				printf("argv[%d]: $%s$\n", i, line);
+				printf("argv[%d]: ret %d $%s$\n", i, ret, line);
 				free(line);
 			}
 		}
+		for (int i = 1; i < argc; i++)
+			printf("argv[%d]: ret %d $%s$\n", i, ret, line);
 	}
 //	while (1)
 //		;
