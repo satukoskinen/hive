@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 12:30:58 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/09 17:06:34 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/10 12:48:55 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,5 @@ int			get_next_line(const int fd, char **line)
 	free(buf);
 	ft_delete_remainder(fd, &r_list);
 	*line = (temp == NULL) ? NULL : temp;
-	return (0);
+	return ((temp == NULL) ? 0 : 1);
 }
