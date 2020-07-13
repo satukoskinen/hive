@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 16:49:17 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/13 21:54:43 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/13 22:29:52 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <stdio.h>
 
 /*
-**
+** Prints an error message and returns EXIT_FAILURE for
+** main to return.
 */
 
 static int		ft_exit_error(void)
@@ -27,27 +28,32 @@ static int		ft_exit_error(void)
 }
 
 /*
-**
+** 
 */
 
 int				main(int argc, char **argv)
 {
 	int		fd;
 	char	**tetriminos;
-
+	char	**result;
+	
+	result = NULL;
 	if (argc != 2)
 		return (ft_exit_error());
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		return (ft_exit_error());
-	tetriminos = (char**)malloc(sizeof(char*) * (26 + 1));
-	if (tetriminos == NULL)
+	if (!(tetriminos = (char**)malloc(sizeof(char*) * (26 + 1))))
 		return (ft_exit_error());
 	if (ft_read_input(fd, tetriminos) == EXIT_FAILURE)
 	{
 		free(tetriminos);
 		return (ft_exit_error());
 	}
-//	if (ft_check_input(tetriminos) == EXIT_FAILURE)
-//		return (ft_exit_error());
+	result = ft_smallest_square(tetriminos);
+	while (result != NULL && *result != 0)
+	{
+		ft_putendl(*result);
+		result++;
+	}
 	return (0);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_input.c                                      :+:      :+:    :+:   */
+/*   smallest_square.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 19:26:50 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/13 20:34:06 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/13 22:31:39 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_check_input(char **tetriminos)
+char		**ft_smallest_square(char **tetriminos)
 {
 	if (tetriminos)
-		return (1);
-	return (0);
+		return (NULL);
+	return (NULL);
 }

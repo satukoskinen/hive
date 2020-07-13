@@ -6,17 +6,17 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 19:18:50 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/13 21:43:57 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/13 22:19:45 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 /*
-**
+** If an error has been encountered, the array filled up to index i is freed
+** and EXIT_FAILURE is returned for ft_read_input to return back to main.
 */
 
 static int	ft_free_and_exit(char **tetriminos, int i)
@@ -31,6 +31,33 @@ static int	ft_free_and_exit(char **tetriminos, int i)
 
 /*
 **
+*/
+
+static int	ft_check_block_positions(char *mino)
+{
+	int i;
+	int j;
+	char pos;
+	
+	i = 0;
+	j = 0;
+	pos = 0;
+	while (mino[4 * i + j] != '#')
+	{
+		if (j + 1 == 4)
+		{
+			j = 0;
+			i++;
+		}
+		else
+			j++;
+	}
+	
+}
+
+/*
+** After a 4x4 square has been saved, ft_check_mino checks
+** that it contains a valid Tetrimino.
 */
 
 static int	ft_check_mino(char *mino)
@@ -48,11 +75,13 @@ static int	ft_check_mino(char *mino)
 	}
 	if (mino[i] != '\0' || blocks != 4)
 		return (EXIT_FAILURE);
+	if (ft_check_block_positions(mino) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
 /*
-**
+** 
 */
 
 static int	ft_get_next_mino(int fd, char *temp)
@@ -83,7 +112,7 @@ static int	ft_get_next_mino(int fd, char *temp)
 }
 
 /*
-**
+** 
 */
 
 int			ft_read_input(int fd, char **tetriminos)
