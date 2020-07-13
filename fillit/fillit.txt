@@ -1,0 +1,45 @@
+Fillit project
+
+Subjects to read on:
+- algorithms
+	- some introductory material
+	- backtracking
+	- optimizing
+
+- data structures
+	- appropriate data structure for saving the input and output
+
+Allowed functions: exit, open, close, write, read, malloc, free
+Makefile compiles without relinks with rules all, clean, fclean, read
+Binary name fillit, compiled only with Wall, Wextra, Werror
+No memory leaks
+
+Mandatory part
+Input requirements
+	- only one parameter: file containing a list of Tetriminos where every
+	Tetrimino is containedd in a 4x4 square and all of them separated by a
+	newline, 1 to 26 Tetriminos allowed
+	-> if argv != 2, program displays usage and exits
+	- Tetrimino is a 4x4 square, contains a 4-block Tetris piece with block
+	character '#' and empty character '.'; each block must touch at least one
+	other block on any of its sides; empty character are ignored in the assemble
+	process
+	- same Tetrimino can be described in multiple ways, but rotation is not 
+	allowed -> a rotated Tetrimino is a different one
+	- in case of invalid input, program displays 'error' and a newline and exits
+
+The smallest square
+	- goal of the project is to arrange given Tetriminos to produce the smallest
+	possible square in which they all fit (may contain holes in some cases)
+	- among all possible candidates for the smallest square, the one with most
+	upper-left placement of Tetriminos is accepted
+	- Tetriminos are ordered by the order in which they appear in the input file
+
+Program output
+	- Display the smallest assembled square on the standard output
+	- To identify distinct Tetriminos, each Tetrimino will be assigned a 
+	capital letter starting with 'A'
+
+Submission
+	- all sources and headers in the same folder
+	- two different folders, one for libft and one for fillit
