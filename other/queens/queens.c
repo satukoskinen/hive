@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 13:21:09 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/22 16:00:45 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/23 09:57:29 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,66 +24,63 @@ void	ft_print_board(char **board, int n)
 		j = 0;
 		while (j < n)
 		{
-/*			if (board[i][j] == 'Q')
-				ft_putchar('Q');
-			else
-				ft_putchar('.');
-*/			ft_putchar(board[i][j]);
+			ft_putchar(board[i][j]);
+			ft_putchar(' ');
 			j++;
 		}
 		ft_putchar('\n');
 		i++;
 	}
+	ft_putchar('\n');
 }
 
-void	ft_update_board(char **board, int i, int j, int n)
+int		ft_available_square(char **board, int i, int j, int n)
 {
 	int k;
 
 	k = 0;
 	while (k < n)
 	{
-		if (board[k][j] != 'Q')
-			board[k][j] = 'X';
-		if (board[i][k] != 'Q')
-			board[i][k] = 'X';
+		if (board[k][j] == 'Q' || board[i][k] == 'Q')
+			return (0);
 		k++;
 	}
-
+	k = 1;
+	while (i - k >= 0 || i + k < n)
+	{
+		if (i - k >= 0 && j - k >= 0 && board[i - k][j - k] == 'Q')
+			return (0);
+		if (i - k >= 0 && j + k < n && board[i - k][j + k] == 'Q')
+			return (0);
+		if (i + k < n && j - k >= 0 && board[i + k][j - k] == 'Q')
+			return (0);
+		if (i + k < n && j + k < n && board[i + k][j + k] == 'Q')
+			return (0);
+		k++;
+	}
+	return (1);
 }
 
-char	**ft_add_queen(char **board, int n, int i, int j)
+void	ft_solve_queens(char **board, int i, int n)
 {
-	board[i][j] = 'Q';
-	ft_update_board(board, i, j, n);
-	return (board);
-}
-
-void	ft_solve_queens(char **board, int q, int n)
-{
-	int i;
 	int j;
 
-	if (q == 0)
+	if (i == n)
 		ft_print_board(board, n);
 	else
 	{
-		i = 0;
-		while (i < n)
+		j = 0;
+		while (j < n)
 		{
-			j = 0;
-			while (j < n)
+			if (ft_available_square(board, i, j, n) == 1)
 			{
-				if (board[i][j] == '.')
-				{
-					ft_solve_queens(ft_add_queen(board, n, i, j), q - 1, n);
-					break;
-				}
-				j++;
+				board[i][j] = 'Q';
+				ft_solve_queens(board, i + 1, n);
+				board[i][j] = '.';
 			}
-			i++;
-		}	
-	}
+			j++;
+		}
+	}	
 }
 
 int		main(int argc, char **argv)
@@ -109,6 +106,6 @@ int		main(int argc, char **argv)
 		ft_memset(board[i], '.', n + 1);
 		i++;
 	}
-	ft_solve_queens(board, n, n);
+	ft_solve_queens(board, 0, n);
 	return (0);
 }
