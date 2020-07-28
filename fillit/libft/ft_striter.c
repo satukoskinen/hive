@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 14:59:24 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/30 16:59:04 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 13:00:00 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/16 13:01:18 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "./includes/libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char*))
 {
-	size_t i;
+	int	i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
-	while (s != 0 && s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		f(&s[i]);
 		i++;

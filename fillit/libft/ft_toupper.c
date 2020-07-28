@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/09 16:04:30 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 11:46:36 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 13:14:37 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/16 13:14:44 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_toupper(int c)
+#include "./includes/libft.h"
+
+int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c >= 97 && c <= 122)
 		return (c - 32);
-	return (c);
+	else
+		return (c);
 }

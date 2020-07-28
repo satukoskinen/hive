@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 13:20:52 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:50:45 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 13:09:20 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/04 23:28:54 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
-	size_t s1_len;
-	size_t s2_len;
+	size_t	i;
+	int		x;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (s2_len > n)
+	i = 0;
+	x = 0;
+	while (dest[x] != '\0')
+		x++;
+	while (i < n && src[i] != '\0')
 	{
-		ft_memcpy(&s1[s1_len], s2, n);
-		s1[s1_len + n] = '\0';
+		dest[x] = src[i];
+		x++;
+		i++;
 	}
-	else
-	{
-		ft_memcpy(&s1[s1_len], s2, s2_len);
-		s1[s1_len + s2_len] = '\0';
-	}
-	return (s1);
+	dest[x] = '\0';
+	return (dest);
 }

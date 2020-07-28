@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   smallest_square.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 19:26:50 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/13 22:31:39 by skoskine         ###   ########.fr       */
+/*   Created: 2020/07/02 15:28:26 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/02 15:32:16 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-char		**ft_smallest_square(char **tetriminos)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (tetriminos)
-		return (NULL);
-	return (NULL);
+	while (lst)
+	{
+		if (lst->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
 }

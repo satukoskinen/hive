@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 15:54:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:40:04 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/15 13:10:25 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/15 13:24:06 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	t_list *p;
-
-	p = *alst;
-	new->next = p;
+	if (!alst || !new)
+		return ;
+	new->next = (*alst);
 	*alst = new;
 }

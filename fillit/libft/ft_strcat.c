@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 13:11:25 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:51:21 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:55:40 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/04 23:26:03 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strcat(char *dest, const char *src)
 {
-	size_t s1_len;
-	size_t s2_len;
+	int i;
+	int	x;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	ft_memcpy(&s1[s1_len], s2, s2_len);
-	s1[s1_len + s2_len] = '\0';
-	return (s1);
+	i = 0;
+	x = 0;
+	while (dest[x] != '\0')
+		x++;
+	while (src[i] != '\0')
+	{
+		dest[x] = src[i];
+		x++;
+		i++;
+	}
+	dest[x] = '\0';
+	return (dest);
 }

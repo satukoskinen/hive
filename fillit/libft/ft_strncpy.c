@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 12:54:27 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:50:39 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 13:09:56 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/18 17:55:57 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dest, const char *src, size_t len)
 {
-	size_t src_len;
+	unsigned int	i;
 
-	src_len = ft_strlen(src);
-	if (src_len >= len)
-		return (ft_memcpy(dst, src, len));
-	ft_memcpy(dst, src, src_len);
-	ft_memset(&dst[src_len], 0, len - src_len);
-	return (dst);
+	i = 0;
+	while (i < len && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < len)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

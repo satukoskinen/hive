@@ -3,20 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 16:39:22 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:40:17 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/15 13:32:57 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/15 13:55:41 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
+	t_list	*temp;
+
+	if (!lst || !f)
+		return ;
 	while (lst != NULL)
 	{
+		temp = lst->next;
 		f(lst);
-		lst = lst->next;
+		lst = temp;
 	}
 }

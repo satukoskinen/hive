@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 15:13:01 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:36:42 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/09 14:56:00 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/14 14:14:19 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <unistd.h>
+#include "./includes/libft.h"
 
 void	ft_putstr(char const *s)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
-		write(1, &s[i], 1);
+		ft_putchar(s[i]);
 		i++;
 	}
 }

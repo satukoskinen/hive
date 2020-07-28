@@ -3,29 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 15:21:10 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:50:49 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/11 13:51:31 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/29 14:00:30 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "./includes/libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*mapping;
-	size_t	i;
+	int		i;
+	int		len;
+	char	*dest;
 
-	if (s == 0 || !(mapping = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	if (!s || !f)
+		return (NULL);
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{
-		mapping[i] = f(i, s[i]);
+		dest[i] = f(i, s[i]);
 		i++;
 	}
-	mapping[i] = '\0';
-	return (mapping);
+	dest[i] = '\0';
+	return (dest);
 }

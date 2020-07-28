@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 17:08:01 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 21:35:47 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/15 13:56:41 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/15 14:49:40 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "./includes/libft.h"
 
-static void	ft_free_list(t_list **new)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	free((*new)->content);
-	free(*new);
-	*new = NULL;
-}
+	t_list	*new;
+	t_list	*fresult;
+	t_list	*nlist;
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
-{
-	t_list *new;
-
-	new = f(lst);
-	if (new == NULL)
+	if (!lst || !f)
 		return (NULL);
-	if (lst->next != NULL)
+	fresult = f(lst);
+	if (!(new = ft_lstnew(fresult->content, fresult->content_size)))
+		return (NULL);
+	nlist = new;
+	lst = lst->next;
+	while (lst)
 	{
-		new->next = ft_lstmap(lst->next, f);
-		if (new->next == NULL)
-			ft_free_list(&new);
+		fresult = f(lst);
+		if (!(nlist->next = ft_lstnew(fresult->content, fresult->content_size)))
+			return (NULL);
+		lst = lst->next;
+		nlist = nlist->next;
 	}
 	return (new);
 }

@@ -3,56 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 18:10:54 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:52:15 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/13 18:08:36 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/18 17:34:02 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "./includes/libft.h"
 
-static int	ft_number_length(int n)
+static char	*ft_create_string(long n, int len)
 {
-	int length;
+	char	*dest;
 
-	length = 1;
-	if (n < 0)
-		length++;
-	while (n / 10 != 0)
+	if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	dest[len] = '\0';
+	len--;
+	while (len >= 0)
 	{
-		length++;
-		n /= 10;
+		dest[len] = 48 + (n % 10);
+		n = n / 10;
+		len--;
 	}
-	return (length);
+	return (dest);
+}
+
+static char	*ft_create_negstring(long n, int len)
+{
+	char	*dest;
+
+	if (!(dest = (char*)malloc(sizeof(char) * (len + 2))))
+		return (NULL);
+	dest[len + 1] = '\0';
+	dest[0] = '-';
+	while (len > 0)
+	{
+		dest[len] = 48 + (n % 10);
+		n = n / 10;
+		len--;
+	}
+	return (dest);
+}
+
+static int	ft_size(long n)
+{
+	int		count;
+
+	count = 0;
+	while (n > 9)
+	{
+		n = n / 10;
+		count++;
+	}
+	count++;
+	return (count);
+}
+
+static int	ft_is_neg(long n)
+{
+	if (n < 0)
+		return (1);
+	else
+		return (0);
 }
 
 char		*ft_itoa(int n)
 {
-	char	*str;
-	int		i;
-	int		length;
-	int		div;
+	char	*dest;
+	int		neg;
+	int		len;
+	long	nb;
 
-	i = 0;
-	length = ft_number_length(n);
-	if (!(str = malloc(sizeof(*str) * (length + 1))))
+	nb = n;
+	neg = ft_is_neg(nb);
+	if (neg == 1)
+	{
+		nb = nb * (-1);
+		len = ft_size(nb);
+		if (!(dest = ft_create_negstring(nb, len)))
+			return (NULL);
+	}
+	else if (neg == 0)
+	{
+		len = ft_size(nb);
+		if (!(dest = ft_create_string(nb, len)))
+			return (NULL);
+	}
+	else
 		return (NULL);
-	if (n < 0)
-	{
-		str[i] = '-';
-		i++;
-		length--;
-	}
-	while (length > 0)
-	{
-		div = ft_power(10, length - 1);
-		str[i] = ft_abs(n / div) + 48;
-		n %= div;
-		i++;
-		length--;
-	}
-	str[i] = '\0';
-	return (str);
+	return (dest);
 }

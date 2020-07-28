@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
+/*   ft_print_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 19:31:05 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:52:01 by skoskine         ###   ########.fr       */
+/*   Created: 2020/07/27 15:57:04 by skoskine          #+#    #+#             */
+/*   Updated: 2020/07/28 15:06:19 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
-void	ft_lstpushback(t_list *alst, t_list *new)
+void	ft_print_array(char **array)
 {
-	t_list *p;
+	int	i;
 
-	p = alst;
-	while (p->next != NULL)
-		p = p->next;
-	p->next = new;
+	i = 0;
+	while (array[i] != NULL)
+		ft_putendl(array[i++]);
 }

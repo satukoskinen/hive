@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 09:31:53 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:35:48 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/09 14:54:42 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/09 14:58:24 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	ft_putendl(char const *s)
 {

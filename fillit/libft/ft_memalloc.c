@@ -3,22 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 13:32:51 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:51:55 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:43:15 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/16 12:43:59 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	*ft_memalloc(size_t size)
 {
-	void *ptr;
+	char	*dest;
+	size_t	i;
 
-	if (size == 0 || !(ptr = malloc(size)))
+	i = 0;
+	if (!(dest = (char*)malloc(sizeof(char) * size)))
 		return (NULL);
-	ft_memset(ptr, 0, size);
-	return (ptr);
+	while (i <= size)
+	{
+		dest[i] = 0;
+		i++;
+	}
+	return (dest);
 }

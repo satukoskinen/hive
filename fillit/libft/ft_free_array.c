@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/12 17:00:07 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/13 22:27:46 by skoskine         ###   ########.fr       */
+/*   Created: 2020/07/27 15:26:02 by skoskine          #+#    #+#             */
+/*   Updated: 2020/07/27 19:00:28 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "./includes/libft.h"
 
-int		ft_read_input(int fd, char **tetriminos);
-int		ft_smallest_square(char **tetriminos);
+void	ft_free_array(void ***array, size_t size)
+{
+	size_t i;
 
-#endif
+	i = 0;
+	while (i < size)
+	{
+		free((*array)[i]);
+		i++;
+	}
+	free(*array);
+	*array = NULL;
+}

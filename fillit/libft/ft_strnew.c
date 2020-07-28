@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 14:49:36 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:50:33 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/13 16:15:00 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/13 16:26:20 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 char	*ft_strnew(size_t size)
 {
-	return ((char*)ft_memalloc(size));
+	size_t	i;
+	char	*dest;
+
+	i = 0;
+	if (!(dest = (char*)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	while (i <= size)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 12:26:23 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:19:27 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:59:38 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/13 14:59:56 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "./includes/libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *src)
 {
-	char	*s2;
-	size_t	s1_len;
+	size_t	i;
+	size_t	x;
+	char	*dest;
 
-	s1_len = ft_strlen(s1);
-	if (!(s2 = (char*)malloc(sizeof(char) * (s1_len + 1))))
+	x = 0;
+	i = 0;
+	while (src[x] != '\0')
+		x++;
+	if (!(dest = (char*)malloc(sizeof(char) * (x + 1))))
 		return (NULL);
-	return (ft_memcpy(s2, s1, s1_len + 1));
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

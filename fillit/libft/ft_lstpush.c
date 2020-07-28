@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_lstpush.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 09:37:20 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:52:33 by skoskine         ###   ########.fr       */
+/*   Created: 2020/07/02 14:01:41 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/02 16:11:48 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_abs(int n)
+#include "./includes/libft.h"
+
+void	ft_lstpush(t_list **alst, t_list *new)
 {
-	return ((n < 0) ? -n : n);
+	t_list	*last;
+
+	if (!alst || !new)
+		return ;
+	if (*alst)
+	{
+		last = ft_lstlast(*alst);
+		last->next = new;
+	}
+	else
+		*alst = new;
 }

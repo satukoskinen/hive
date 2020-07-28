@@ -3,31 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/10 08:31:27 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 09:02:36 by skoskine         ###   ########.fr       */
+/*   Created: 2020/07/02 16:54:02 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/14 22:25:37 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "./includes/libft.h"
 
-void	*ft_realloc(void *ptr, size_t ptr_size, size_t size)
+void	*ft_realloc(void *ptr, size_t oldsize, size_t newsize)
 {
-	void	*new;
+	char	*new;
 
-	if (size == 0 && ptr != NULL)
+	if (!ptr)
 	{
-		free(ptr);
-		new = NULL;
+		if (!(new = (char*)malloc(sizeof(char) * newsize)))
+			return (NULL);
 	}
-	else
-		new = malloc(size);
-	if (new != NULL && ptr != NULL)
+	if ((!newsize && ptr))
 	{
-		ft_memcpy(new, ptr, (ptr_size > size ? size : ptr_size));
-		free(ptr);
+		if (!(new = (char*)malloc(1)))
+			return (NULL);
+		ft_memdel(&ptr);
+		return (new);
 	}
+	if (newsize <= oldsize)
+		return (ptr);
+	if (!(new = ft_memalloc(newsize)))
+		return (NULL);
+	ft_memcpy(new, ptr, oldsize);
+	ft_memdel(&ptr);
 	return (new);
 }

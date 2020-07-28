@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 09:58:30 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 13:38:15 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:47:54 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/02 13:39:23 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "./includes/libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (n > 0)
+	size_t			i;
+	unsigned char	*p;
+
+	i = 0;
+	p = (unsigned char*)s;
+	while (i < n)
 	{
-		if (*(unsigned char*)s == (unsigned char)c)
-			return ((void*)s);
-		n--;
-		s++;
+		if (p[i] == (unsigned char)c)
+			return (&p[i]);
+		i++;
 	}
 	return (NULL);
 }

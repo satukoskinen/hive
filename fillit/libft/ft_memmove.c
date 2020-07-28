@@ -3,28 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 09:25:16 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:51:45 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:51:35 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/02 13:32:39 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *to, const void *from, size_t len)
 {
-	if (dst < src)
+	size_t	i;
+	char	*cto;
+	char	*cfrom;
+
+	if (!to && !from)
+		return (NULL);
+	cto = (char*)to;
+	cfrom = (char*)from;
+	if (from < to)
 	{
-		ft_memcpy(dst, src, len);
+		i = len;
+		while (i-- > 0)
+			cto[i] = cfrom[i];
 	}
 	else
 	{
-		while (len > 0)
+		i = 0;
+		while (i < len)
 		{
-			((char*)dst)[len - 1] = ((char*)src)[len - 1];
-			len--;
+			cto[i] = cfrom[i];
+			i++;
 		}
 	}
-	return (dst);
+	return (to);
 }

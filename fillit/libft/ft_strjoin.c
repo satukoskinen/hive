@@ -3,35 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 15:43:14 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:51:03 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 13:49:02 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/15 15:52:15 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "./includes/libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
-	char	*p;
+	int		i;
+	int		len;
 
-	if (s1 == NULL && s2 == NULL)
+	i = 0;
+	if (!s1 || !s2)
+	{
+		if (!s1 && !s2)
+			return (NULL);
+		else if (!s1)
+			return (ft_strdup(s2));
+		else if (!s2)
+			return (ft_strdup(s1));
+	}
+	len = (ft_strlen((char*)s1) + ft_strlen((char*)s2));
+	if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	if (s1 == NULL && s2 != NULL)
-		return (ft_strdup(s2));
-	if (s1 != NULL && s2 == NULL)
-		return (ft_strdup(s1));
-	dest = (char*)malloc(sizeof(*dest) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (dest == NULL)
-		return (NULL);
-	p = dest;
 	while (*s1 != '\0')
-		*p++ = *s1++;
+		dest[i++] = (char)*s1++;
 	while (*s2 != '\0')
-		*p++ = *s2++;
-	*p = '\0';
+		dest[i++] = (char)*s2++;
+	dest[i] = '\0';
 	return (dest);
 }

@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 10:18:32 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/24 14:38:47 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:48:03 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/02 13:32:14 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "./includes/libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t i;
+	size_t			i;
+	int				res;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
 	i = 0;
-	if (n == 0)
+	p1 = (unsigned char*)s1;
+	p2 = (unsigned char*)s2;
+	if (n <= 0)
 		return (0);
-	while (i < n - 1 && ((unsigned char*)s1)[i] == ((unsigned char*)s2)[i])
+	while (i < (n - 1) && p1[i] == p2[i])
 		i++;
-	return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
+	res = p1[i] - p2[i];
+	return (res);
 }

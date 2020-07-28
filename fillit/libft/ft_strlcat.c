@@ -3,32 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/17 11:53:45 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/10 17:50:59 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 13:49:58 by esormune          #+#    #+#             */
+/*   Updated: 2020/07/04 23:28:28 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-	size_t	dst_len;
-	size_t	src_len;
 	size_t	i;
+	size_t	j;
+	size_t	len;
+	long	max;
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
 	i = 0;
-	if (dstsize <= dst_len)
-		return (dstsize + src_len);
-	while (i < dstsize - dst_len - 1)
+	j = ft_strlen(dest);
+	len = (ft_strlen(dest) + ft_strlen(src));
+	max = (long)dstsize - (long)ft_strlen(dest) - 1;
+	if (dstsize == 0)
+		return (ft_strlen(src) + dstsize);
+	while (src[i] != '\0' && (long)i < max)
 	{
-		dst[dst_len + i] = src[i];
+		dest[j] = src[i];
 		i++;
+		j++;
 	}
-	if (i != 0)
-		dst[dst_len + i] = '\0';
-	return (dst_len + ft_strlen(src));
+	dest[j] = '\0';
+	if (dstsize < ft_strlen(dest))
+		return (ft_strlen(src) + dstsize);
+	return (len);
 }

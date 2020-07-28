@@ -3,21 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 15:14:10 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 18:45:13 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/16 12:57:22 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/22 15:46:19 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "./includes/libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t i;
+	int				i;
+	int				res;
+	unsigned char	*us1;
+	unsigned char	*us2;
 
+	us1 = (unsigned char *)s1;
+	us2 = (unsigned char *)s2;
 	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	while (us1[i] == us2[i] && us1[i] != '\0' && us2[i] != '\0')
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	res = us1[i] - us2[i];
+	return (res);
 }

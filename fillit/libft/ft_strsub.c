@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/06 18:37:50 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/30 17:03:04 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/12 16:10:45 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/14 14:14:48 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
+#include "./includes/libft.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
+	char	*dest;
 	size_t	i;
 
-	if (s == 0 || !(substr = (char*)malloc(sizeof(*substr) * (len + 1))))
+	if (!s)
+		return (NULL);
+	if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
 	while (i < len)
 	{
-		substr[i] = s[start];
-		start++;
+		dest[i] = s[start + i];
 		i++;
 	}
-	substr[i] = '\0';
-	return (substr);
+	dest[i] = '\0';
+	return (dest);
 }

@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/05 12:34:55 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/25 13:34:59 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/08 13:48:49 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/16 17:27:28 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "./includes/libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t i;
+	char	*str;
+	size_t	i;
 
+	str = (char*)b;
 	i = 0;
 	while (i < len)
 	{
-		((unsigned char*)b)[i] = (unsigned char)c;
+		str[i] = (char)c;
 		i++;
 	}
 	return (b);

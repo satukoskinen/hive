@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_is_whitespace.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 21:15:26 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/07 09:29:34 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/29 20:30:02 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/29 20:32:10 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "./includes/libft.h"
 
-# define BUFF_SIZE 3
-
-typedef struct		s_rlist
+int	ft_is_whitespace(char c)
 {
-	int				fd;
-	char			*remainder;
-	struct s_rlist	*next;
-}					t_rlist;
-
-int					get_next_line(const int fd, char **line);
-
-#endif
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\r' ||
+		c == '\v' || c == '\f')
+		return (1);
+	else
+		return (0);
+}

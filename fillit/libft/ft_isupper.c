@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 09:38:21 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/30 09:38:27 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/29 21:43:15 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/29 22:10:51 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_power(int base, int power)
-{
-	int result;
+#include "./includes/libft.h"
 
-	result = 1;
-	while (power > 0)
-	{
-		result *= base;
-		power--;
-	}
-	return (result);
+int	ft_isupper(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	else
+		return (0);
 }

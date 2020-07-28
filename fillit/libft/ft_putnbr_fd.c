@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: esormune <esormune@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 18:52:09 by skoskine          #+#    #+#             */
-/*   Updated: 2020/06/28 14:35:52 by skoskine         ###   ########.fr       */
+/*   Created: 2020/06/09 14:58:44 by esormune          #+#    #+#             */
+/*   Updated: 2020/06/14 14:14:08 by esormune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int ln;
+	long	i;
 
-	ln = n;
-	if (ln < 0)
+	i = n;
+	if (i < 0)
+	{
 		ft_putchar_fd('-', fd);
-	if (ln >= 10)
-		ft_putnbr_fd(ln / 10, fd);
-	else if (ln <= -10)
-		ft_putnbr_fd(ln / 10 * (-1), fd);
-	if (ln >= 0)
-		ft_putchar_fd(ln % 10 + 48, fd);
-	else
-		ft_putchar_fd((ln * (-1)) % 10 + 48, fd);
+		i = i * (-1);
+	}
+	if (i > 9)
+	{
+		ft_putnbr_fd((i / 10), fd);
+		ft_putnbr_fd((i % 10), fd);
+	}
+	if (i <= 9)
+		ft_putchar_fd((i + 48), fd);
 }
