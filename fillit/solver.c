@@ -6,112 +6,110 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 10:22:49 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/28 18:14:10 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/08/17 17:40:52 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-static char	**ft_init_square(int square_size)
+static int	ft_print_square(char *result, int square_size)
 {
-	char	**square;
-	int		i;
+	int j;
+	int i;
 
-	square = (char**)malloc(sizeof(char*) * (square_size + 1));
+	j = 0;
+	while (j < square_size)
+	{
+		i = 0;
+		while (i < square_size)
+		{
+			ft_putchar(result[square_size * j + i]);
+			i++;
+		}
+		ft_putchar('\n');
+		j++;
+	}
+	return (1);
+}
+
+/*
+** Ft_solver implements a backtracking algorithm to find (almost) all possible
+** arrangements of all given tetriminos in the given square. If it encounters
+** the stopping condition (all minos have already been added), it calls
+** ft_compare_and_save to compare with possible previously found solution and
+** if its arrangement is preferable to the previous result, that is replaced.
+** If loop is set to one on the function call, ft_solve
+*/
+
+static int	ft_solve(t_mino **minos, int i, char *sqr, int size)
+{
+	int xy;
+
+	if (minos[i] == NULL)
+		return (ft_print_square(sqr, size));
+	xy = 0;
+	while (sqr[xy] != 0)
+	{
+		if (sqr[xy] == '.' && ft_add(sqr, minos[i], size, xy) == 1)
+		{
+			if ((ft_solve(minos, i + 1, sqr, size)) == 1)
+				return (1);
+			ft_remove(sqr, xy, size, minos[i]);
+		}
+		xy++;
+	}
+	return (0);
+}
+
+/*
+** Initializes the array of pointers to char arrays for the square
+** in which tetriminos are placed. The outer array of pointers is
+** terminated by a NULL pointer.
+*/
+
+static char	*ft_init_square(int square_size)
+{
+	char	*square;
+
+	square = (char*)malloc(sizeof(char) * (square_size * square_size + 1));
 	if (!square)
 		return (NULL);
-	i = 0;
-	while (i < square_size)
-	{
-		square[i] = (char*)malloc(sizeof(char) * (square_size + 1));
-		if (!square[i])
-			return (NULL);
-		ft_memset(square[i], '.', square_size);
-		square[i][square_size] = '\0';
-		i++;
-	}
-	square[square_size] = NULL;
+	ft_memset(square, '.', square_size * square_size);
+	square[square_size * square_size] = '\0';
 	return (square);
 }
 
-static int	ft_next_to_add(t_mino **minos, int i)
-{
-	while (minos[i] != NULL)
-	{
-		if (minos[i]->added == 0)
-			return (i);
-		i++;
-	}
-	return (i);
-}
+/*
+** After calculating the starting size of the square and initializing the square
+** and result arrays, ft_solve is called until it finds a solution. If no
+** solution is found, ft_solve is first called with an additional loop that
+** tries out up to 3 possible positions for each added block. If that does not
+** return a solution, the square size is increased. Finally, the square array
+** is freed and the result array is returned.
+*/
 
-static int	ft_solve(t_mino **minos, char **result, char **square, int loop)
+int			ft_fillit(t_mino **minos)
 {
-	int ret;
-	int i;
-	int c;
-	int added;
-
-	ret = 0;
-	i = ft_next_to_add(minos, 0);
-	if (minos[i] == NULL)
-		return (ft_compare_and_save(square, result));
-	while (minos[i] != NULL)
-	{
-		c = 0;
-		if ((added = ft_add(square, minos[i], c)) == 0)
-			return (0);
-		while (added == 1)
-		{
-			ret = (ft_solve(minos, result, square, loop) == 1) ? 1 : ret;
-			ft_remove(square, minos[i]);
-			added = (loop == 0 || c > 1) ? 0 : ft_add(square, minos[i], ++c);
-		}
-		i = ft_next_to_add(minos, i + 1);
-	}
-	return (ret);
-}
-
-static int	ft_init_square_size(t_mino **minos)
-{
-	int size;
-	int square_size;
+	int		size;
+	int		square_size;
+	char	*square;
 
 	size = 0;
 	while (minos[size] != NULL)
 		size++;
-		
 	square_size = 2;
 	while (square_size * square_size < size * 4)
 		square_size++;
-	return (square_size);
-}
-
-char		**ft_fillit(t_mino **minos)
-{
-	int		square_size;
-	int		loop;
-	char	**square;
-	char	**result;
-
-	square_size = ft_init_square_size(minos);
-	loop = 0;
 	if (!(square = ft_init_square(square_size)))
-		return (NULL);
-	if (!(result = ft_init_square(square_size)))
-		return (NULL);
-	while (ft_solve(minos, result, square, loop) != 1)
+		return (0);
+	while (ft_solve(minos, 0, square, square_size) != 1)
 	{
-		ft_free_array((void ***)&square, square_size);
-		ft_free_array((void ***)&result, square_size);
-		square_size = (loop == 0) ? square_size : square_size + 1;
-		loop = (loop == 0) ? 1 : 0;
+		free(square);
+		square_size++;
 		if (!(square = ft_init_square(square_size)))
-			return (NULL);
-		if (!(result = ft_init_square(square_size)))
-			return (NULL);
+			return (0);
 	}
-	ft_free_array((void***)&square, square_size);
-	return (result);
+	free(square);
+	return (square_size);
 }

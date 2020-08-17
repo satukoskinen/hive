@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 16:49:17 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/28 17:30:22 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/08/17 17:35:49 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include "fillit.h"
 #include <fcntl.h>
 
-#define ARR_SIZE 26
+/*
+** Prints an error message and returns EXIT_FAILURE for main to return.
+*/
 
 static int	ft_exit_foobar(void)
 {
@@ -22,46 +24,44 @@ static int	ft_exit_foobar(void)
 	return (EXIT_FAILURE);
 }
 
+/*
+** Prints a usage message and returns EXIT_FAILURE for main to return.
+*/
+
 static int	ft_exit_usage(void)
 {
 	ft_putstr("usage: ./fillit input_file\n");
 	return (EXIT_FAILURE);
 }
 
-static int	ft_arr_size(void **array)
-{
-	int i;
-
-	i = 0;
-	while (array[i] != NULL)
-		i++;
-	return (i);
-}
+/*
+** The program first checks that it has been given one file as argument
+** that can be opened. The array in which to save the tetriminos is
+** initialized, input is read from fd, and if it is valid it is saved
+** in the array. The array is then passed on to ft_solve which returns the
+** solution (minimum sized square that contains all the input tetriminos) that
+** is saved and printed to standard output. Finally, remaining allocated
+** memory is freed.
+*/
 
 int			main(int argc, char **argv)
 {
 	int		fd;
-	t_mino	**tetriminos;
-	char	**result;
+	int		square_size;
+	int		i;
+	t_mino	*tetriminos[26 + 1];
 
 	if (argc != 2)
 		return (ft_exit_usage());
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		return (ft_exit_foobar());
-	if (!(tetriminos = (t_mino**)malloc(sizeof(t_mino*) * (ARR_SIZE + 1))))
+	if (ft_read_input(fd, tetriminos) == EXIT_FAILURE)
 		return (ft_exit_foobar());
-	if (ft_read_input(fd, tetriminos, ARR_SIZE) == EXIT_FAILURE)
-	{
-		free(tetriminos);
+	square_size = ft_fillit(tetriminos);
+	i = 0;
+	while (tetriminos[i] != NULL)
+		free(tetriminos[i++]);
+	if (square_size == 0)
 		return (ft_exit_foobar());
-	}
-	if (!(result = ft_fillit(tetriminos)))
-	{
-		ft_free_array((void***)&tetriminos, ft_arr_size((void**)tetriminos));
-		return (ft_exit_foobar());
-	}
-	ft_free_array((void***)&tetriminos, ft_arr_size((void**)tetriminos));
-	ft_print_array(result);
-	ft_free_array((void***)&result, ft_arr_size((void**)result));
 	return (0);
 }

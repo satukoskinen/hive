@@ -5,15 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 19:18:50 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/28 17:44:48 by skoskine         ###   ########.fr       */
+/*   Created: 2020/07/30 13:08:25 by esormune          #+#    #+#             */
+/*   Updated: 2020/08/17 17:20:16 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-static void	ft_realign(t_mino **tetriminos)
+/*
+** Realigns the block coordinates to set the first block's coordinates to (0,0)
+** and the remaining three's coordinates as relative to the first block.
+*/
+
+static int	ft_realign(t_mino **tetriminos)
 {
 	int	i;
 	int	x;
@@ -34,7 +39,16 @@ static void	ft_realign(t_mino **tetriminos)
 		}
 		i++;
 	}
+	return (EXIT_SUCCESS);
 }
+
+/*
+** Ft_save_mino recursively saves the coordinates of the tetrimino blocks.
+** It first saves the coordinates of index i to block n passed as arguments.
+** Then, if it has not already saved all the blocks, it checks whether there
+** is an unsaved adjacent block on the right, down or on the left. If so,
+** it calls itself with that index and n + 1.
+*/
 
 static int	ft_save_mino(char *temp, t_mino *tetrimino, int i, int n)
 {
@@ -63,6 +77,15 @@ static int	ft_save_mino(char *temp, t_mino *tetrimino, int i, int n)
 	return (n);
 }
 
+/*
+** After a 4x4 square has been saved, ft_set_mino checks that it contains
+** a potentially valid Tetrimino, initializes a mino and saves it to the given
+** pointer to the tetriminos array, and calls ft_save_mino to check that
+** the coordinates are valid and to save them in the created mino struct.
+** If ft_save_mino could not find the four adjacent blocks to save the
+** coordinates, EXIT_FAILURE is returned.
+*/
+
 static int	ft_set_mino(char *temp, t_mino **tetrimino, int index)
 {
 	int		i;
@@ -90,58 +113,41 @@ static int	ft_set_mino(char *temp, t_mino **tetrimino, int index)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_get_next_mino(int fd, t_mino **tetrimino, int index)
-{
-	int		ret;
-	int		lines;
-	char	temp[16 + 1];
-	char	*line;
+/*
+** Reads 4 lines at a time in buf, checking after each call of read that there
+** is a newline at the right place. After that, the read input is passed to
+** ft_set_mino which checks the input and saves it in the minos array. Next,
+** it checks that if the EOF has not been reached, the next character read is
+** a newline (empty line between minos) and that the number of minos read
+** has not exceeded 26. After looping through the minos, it calls ft_realign
+** which also returns EXIT_SUCCESS to the main.
+*/
 
-	lines = 0;
-	line = NULL;
-	ft_memset(temp, 0, 17);
-	while (lines < 4)
-	{
-		if ((ret = get_next_line(fd, &line)) != 1)
-			return (EXIT_FAILURE);
-		else if (ft_strlen(line) != 4)
-		{
-			free(line);
-			return (EXIT_FAILURE);
-		}
-		ft_strcat(temp, line);
-		free(line);
-		lines++;
-	}
-	if (ft_set_mino(temp, tetrimino, index) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
-
-int			ft_read_input(int fd, t_mino **tetriminos, int arr_size)
+int			ft_read_input(int fd, t_mino **minos)
 {
 	int		ret;
 	int		i;
-	char	*line;
+	int		lines;
+	char	buf[20];
 
 	ret = 1;
 	i = 0;
-	line = NULL;
 	while (ret == 1)
 	{
-		if (ft_get_next_mino(fd, &tetriminos[i], i) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		i++;
-		if (i > arr_size)
-			return (EXIT_FAILURE);
-		if ((ret = get_next_line(fd, &line)) == 1 && *line != '\0')
+		lines = 0;
+		while (lines < 4 && (ret = read(fd, &buf[lines * 4], 5)) == 5)
 		{
-			free(line);
-			return (EXIT_FAILURE);
+			if (buf[lines * 4 + 4] != '\n')
+				return (EXIT_FAILURE);
+			buf[lines++ * 4 + 4] = '\0';
 		}
-		free(line);
+		if (ret < 5)
+			return (EXIT_FAILURE);
+		if (ft_set_mino(buf, &minos[i], i) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
+		if ((((ret = read(fd, buf, 1)) == 1) && (buf[0] != '\n')) || ++i >= 27)
+			return (EXIT_FAILURE);
 	}
-	tetriminos[i] = NULL;
-	ft_realign(tetriminos);
-	return (EXIT_SUCCESS);
+	minos[i] = NULL;
+	return (ft_realign(minos));
 }
