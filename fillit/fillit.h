@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 10:54:50 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/28 15:08:56 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/08/17 17:20:36 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ typedef struct	s_mino
 	int			added;
 }				t_mino;
 
-int				ft_read_input(int fd, t_mino **tetriminos, int arr_size);
-char			**ft_fillit(t_mino **minos);
-int				ft_compare_and_save(char **square, char **result);
-int				ft_add(char **square, t_mino *mino, int count);
-void			ft_remove(char **square, t_mino *mino);
+int				ft_read_input(int fd, t_mino **minos);
+int				ft_fillit(t_mino **minos);
+int				ft_add(char *square, t_mino *mino, int size, int count);
+void			ft_remove(char *square, int xy, int size, t_mino *mino);
 
 #endif
