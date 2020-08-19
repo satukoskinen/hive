@@ -1,0 +1,4 @@
+#07: Query an external DNS server on the slash16.org domain name
+nslookup slash16.org 8.8.8.8
+#If a DNS server other than the default specified in the /etc/resolv.conf should be used,
+#its IP address is added after the domain name that is queried

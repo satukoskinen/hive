@@ -1,0 +1,2 @@
+#04 Default gateway in the routing table
+netstat -nr

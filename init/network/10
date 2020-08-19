@@ -1,0 +1,5 @@
+#10: Network devices between the computer and the slash16.org domain
+traceroute slash16.org
+#traceroute shows the full route the packets take to get to their destination. It shows
+#IPs of the routers it goes through on the way and the time it takes for each to receive
+#and resend the packets.

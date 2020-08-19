@@ -1,0 +1,8 @@
+#03: MAC address of the Wi-Fi card
+ifconfig en1 | grep 'ether ' | cut -d ' ' -f 2
+#alternatively the following command lists the hardware ports
+#networksetup -listallhardwareports
+#MAC (media access control) address, typically represented as six groups of hexadecimal digits,
+#is a unique identifier assigned to a NIC (network interface card/controller). MAC addresses
+#are linked to the hardware of network adapters whereas IP addresses reate to the TCP/IP (networking software).
+#It's sometimes referred to as the physical address, the networking hardware address or the burned-in address

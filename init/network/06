@@ -1,0 +1,2 @@
+#06: complete path of the file containing the IP address of the DNS server that is used
+/etc/resolv.conf

@@ -1,0 +1,7 @@
+#12: IP that was assigned by the dhcp server
+ipconfig getpacket en0 | grep 'yiaddr'
+#Dynamic Host Configuration Protocol automates the management and configuration of IP
+#addresses across a network so that they don't need to be manually assigned each time
+#a device connects. DHCP also configures the domain server, subnet masks and default gateways.
+#ipconfig getpacket interface determines e.g. the IP address of the DHCP server from which the IP
+#address, subnet mask etc of the given interface (e.g. en0, en1) is received.

@@ -1,0 +1,2 @@
+#01: list of names of network interfaces
+ifconfig -l

@@ -1,0 +1,11 @@
+#09: The external IP of 42.fr
+#Executing the command dnslookup 42.fr, we get
+Server:		10.51.1.253
+Address:	10.51.1.253#53
+
+Non-authoritative answer:
+Name:	42.fr
+Address: 163.172.250.13
+Name:	42.fr
+Address: 163.172.250.12
+

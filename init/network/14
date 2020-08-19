@@ -1,0 +1,3 @@
+#14: File that contains the local DNS entries
+/etc/hosts
+#The hosts file contains information about the known hosts on the network. 

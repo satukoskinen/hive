@@ -1,0 +1,7 @@
+#05: IP address of the DNS that responds to the url slash16.org
+nslookup slash16.org
+#nslookup queries Internet domain name servers. The domain name system provides a directory and a 
+#"translation service" between the two principal namespaces maintained in the Internet:
+#IP addresses and their associated domain names (more humanly readable hostnames).
+#alternatively, the dig command can be used:
+#dig slash16.org

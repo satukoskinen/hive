@@ -1,0 +1,3 @@
+#13: Find the name of host using its IP address
+#executing nslookup 10.11.5.7, you get
+c1r5p7.hive.fi
