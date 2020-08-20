@@ -1,0 +1,5 @@
+#14 Run 'tail -f /var/log/syslog' in the background
+tail -f /var/log/syslog &
+#Shell job ID and PID will be printed. 'jobs -l' shows the status of all stopped and background jobs
+#of the current shell session. To bring a background process to the foreground, use 'fg'.
+#To terminate a background process, use 'kill' with the process ID as argument.

@@ -1,0 +1,6 @@
+#07: PID of the SSHD service
+pidof sshd
+#PID (process identifier, process ID) is used by most OS kernels to
+#uniquely identify an active process. The PID of a process can be used
+#as a parameter in function calls that manipulate the process
+#pidof finds a PID of a running program

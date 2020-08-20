@@ -1,0 +1,3 @@
+#18 Kill SSH service
+systemctl stop ssh
+#Examining systemctl status ssh, ssh is now inactive.

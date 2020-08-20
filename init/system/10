@@ -1,0 +1,3 @@
+#10: List partition tables of drives
+lsblk -p
+#lsblk stands for 'list block devices', and -p option lists full paths of the devices.

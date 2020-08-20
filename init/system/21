@@ -1,0 +1,3 @@
+#21: List all real users
+getent passwd | grep '/home/'
+#List users whose home directory starts with /home/.

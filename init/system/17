@@ -1,0 +1,9 @@
+#17: Connect via SSH on the VM
+ssh -X username@address
+#alternatively 'ssh -X -l username address'
+#-X option enables X11 forwarding. On the client side, it can be made default with 'ForwardX11 yes' in ~/.ssh/config.
+#On the server side, X11 forwarding must be allowed (as default not) by setting 'X11Forwarding yes' in /etc/ssh/sshd_config.
+#Also, the xauth program must be installed on the server side.
+#How ssh -X works: the program is run on the remote machine and a proxy X11 server is set up to which the running
+#program sends the drawing programs. These are then forwarded by the proxy X11 server to the real X11 server on
+#the local machine, which then draws on the screen.

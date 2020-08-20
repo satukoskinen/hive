@@ -1,0 +1,3 @@
+#06: Reboot SSH service
+systemctl restart ssh
+#This can be then checked with systemctl status ssh: active since has updated

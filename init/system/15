@@ -1,0 +1,2 @@
+#15: Kill background command process
+kill process_id

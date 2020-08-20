@@ -1,0 +1,4 @@
+#11: Display available and used space on the system in a "humanly" way
+df -h --total
+#df reports file system disk space usage. The -h option prints sizes in powers of 1024 (aka 2^10). -H or --si
+#prints sizes in powers of 1000 (10^3). The --total option adds a sum row at the bottom.

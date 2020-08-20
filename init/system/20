@@ -1,0 +1,4 @@
+#20: List all existing users
+getent passwd
+#get entries from Name Service Switch libraries. Here, the passwd database from /etc/passwd (which contains
+#user account information) is shown.

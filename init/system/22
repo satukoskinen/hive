@@ -1,0 +1,7 @@
+#22: Add a new local user
+adduser user_name
+#Alternatively, useradd
+#adduser command is located in /usr/bin which needed to be added to the $PATH
+#variable by adding export PATH="$PATH:/usr/sbin/" to ~/.bashrc.
+#In general, if a certain command is not found, its location can be found by 'which command'.
+#Then, one can check whether $PATH contains it.

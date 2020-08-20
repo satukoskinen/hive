@@ -1,0 +1,4 @@
+#04: Time since system was last booted
+uptime
+#shows current time, how long the system has been running, amount of
+#logged-on users, and average system load times for the past 1, 5, 15 minutes

@@ -1,0 +1,2 @@
+#05: Determine state of the SSH service
+systemctl status ssh

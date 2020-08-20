@@ -1,0 +1,3 @@
+#02: Command to rename system / host
+hostname new_name
+#requires admin privileges

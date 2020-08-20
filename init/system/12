@@ -1,0 +1,4 @@
+#12: Exact size of each folder and its path in /var in a 'humanly' understandable way
+du /var -h
+#du estimates file space usage for its arguments, recursively for directories.
+#for some directories, admin privileges would be required.
