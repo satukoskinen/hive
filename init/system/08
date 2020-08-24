@@ -2,4 +2,4 @@
 ~/.ssh/authorized_keys
 #Location of keys can be configured in SSH server configuration files
 #RSA (Rives-Shamir-Adleman) is the public-key cryptosystem that uses the
-#rsa algorithm to generate the public and corresponding private keys. 
+#rsa algorithm to generate the public and corresponding private keys.

@@ -1,5 +1,5 @@
 #03: MAC address of the Wi-Fi card
-ifconfig en1 | grep 'ether ' | cut -d ' ' -f 2
+ifconfig en0 | grep 'ether ' | cut -d ' ' -f 2
 #alternatively the following command lists the hardware ports
 #networksetup -listallhardwareports
 #MAC (media access control) address, typically represented as six groups of hexadecimal digits,

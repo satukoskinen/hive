@@ -1,1 +1,15 @@
 #23: Connecting via SSH as a new user
+#In order to allow for SSH connections to the VM within my host computer, port forwarding had to be enabled
+#from the Machine -> Settings -> Network tab on VirtualBox. There, I set 2222 as host port and 22 as guest port.
+#This means that all connections coming to port 2222 on the host will be forwarded to the guest as if they arrived to
+#the guest's port 22. This makes it possible to connect via SSH through my host computer, using the host's
+#IP address and specifying the port with -p option.
+#To enable the graphic session, following lines had to be added to the host's ~/.ssh/config file:
+#  ForwardX11Trusted yes
+#  ForwardX11 yes
+#  XAuthLocation /opt/X11/bin/xauth
+#Finally, executing the following command allowed me to log in as skoskine on the VM
+#ssh -X -p 2222 skoskine@127.0.0.1
+#Alternatively, using host's IP address
+#ssh -X -p 2222 skoskine@192.168.1.12
+#When logged in, the functioning of the graphic session can be tested e.g. by launching xclock.

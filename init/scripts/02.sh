@@ -1,3 +1,4 @@
+#!/bin/sh
 #Delete an ACTIVE user
 echo "Give the name of the user to be deleted:"
 read username

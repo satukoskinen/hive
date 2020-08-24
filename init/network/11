@@ -1,2 +1,7 @@
 #11: Name and IP address of the device that makes the link between you (local network) and the outside world
-#First hop of the traceroute gives 10.11.254.254
+#The NAT server (network address translation) modifies the source IP address of packets; Wikipedia
+#states that NAT has become virtually synonymous with IP masquerading. One Internet-routable
+#IP address of a NAT gateway can be used for an entire private network, conserving address space.
+#In other words, NAT allows multiple private devices with their own private IP addresses to access
+#the Internet through a common public/global address.
+#On the school network, calling traceroute gives as the second hop "nat.hive.fi" with IP address of 10.60.1.1.

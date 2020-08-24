@@ -1,7 +1,8 @@
 #02: Ethernet interface characteristics: broadcast address and IP addresses that are part of the same subnet
-ifconfig en0
+ifconfig | grep 'broadcast' | rev | cut -d " " -f 1,2 | rev
 #Broadcast address is an IP address where the host portion bits are set to one:
 #it is used to broadcast a message to every host on a network.
+arp -a
 #IP addresses (unique 32 bit number for a host on a TCP/IP network or the Internet)
 #consist of two parts: network address which the routers use to deliver
 #packets to the host's network, and host address which identifies the host
