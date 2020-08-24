@@ -1,2 +1,2 @@
 #04 Default gateway in the routing table
-netstat -nr
+netstat -nr | grep 'default' -m 1

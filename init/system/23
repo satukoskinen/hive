@@ -1,4 +1,6 @@
 #23: Connecting via SSH as a new user
+#To allow for SSH connections between the host and the guest, the host's public key has to be added
+#in the guest's ~/.ssh/authorized_keys.
 #In order to allow for SSH connections to the VM within my host computer, port forwarding had to be enabled
 #from the Machine -> Settings -> Network tab on VirtualBox. There, I set 2222 as host port and 22 as guest port.
 #This means that all connections coming to port 2222 on the host will be forwarded to the guest as if they arrived to
