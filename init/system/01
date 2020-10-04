@@ -1,2 +1,3 @@
 #01: File that contains information about the OS version
-/etc/os-release
+/etc/debian-version
+#Alternative information displayed in /etc/os-release
