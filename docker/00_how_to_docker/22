@@ -1,0 +1,2 @@
+#eval $(docker-machine env Aiur)
+docker swarm join --token SWMTKN-1-19vf3wxzssfovhkimbm10kffcitozrryp6wy842apglzzmfvoi-6kvlyis0lgr2cagiaa0jin6tt 192.168.99.101:2377

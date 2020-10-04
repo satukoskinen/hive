@@ -1,0 +1,3 @@
+docker-machine ssh Char mkdir HOME
+docker-machine scp -r app Char:HOME/app
+docker run -d -it --publish 3000:5000 --mount type=bind,source=/home/docker/HOME,dst=/root --name Abathur --workdir /root/app python:2-slim bash abathur_setup.sh

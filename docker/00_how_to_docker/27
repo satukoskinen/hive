@@ -1,0 +1,2 @@
+#docker service logs engineering-bay
+docker service logs $(docker service ps -q engineering-bay | head -1)
