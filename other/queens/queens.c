@@ -6,7 +6,7 @@
 /*   By: skoskine <skoskine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 13:21:09 by skoskine          #+#    #+#             */
-/*   Updated: 2020/07/23 09:57:29 by skoskine         ###   ########.fr       */
+/*   Updated: 2020/07/23 10:04:26 by skoskine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2 || (n = ft_atoi(argv[1])) <= 0)
 	{
-		ft_putendl("Invalid argument.");
+		ft_putstr("Invalid argument.\n");
 		return (1);
 	}
 	i = 0;
