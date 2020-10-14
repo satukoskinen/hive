@@ -1,0 +1,2 @@
+# 26: Launch the 42-school/engineering-bay service in two replicas on the overmind network
+docker service create --name engineering-bay --env OC_USERNAME=rabbit --env OC_PASSWD=salad --network overmind --replicas 2 42school/engineering-bay

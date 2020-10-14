@@ -1,1 +1,2 @@
+# 08: Launch a shell from an alpine container
 docker run -it --rm alpine

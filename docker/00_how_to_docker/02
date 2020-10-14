@@ -1,1 +1,2 @@
+# 02: Get IP of the Char VM
 docker-machine ip Char

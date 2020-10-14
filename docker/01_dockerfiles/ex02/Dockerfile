@@ -31,11 +31,13 @@ RUN yarn install --check-files
 # Copy source code
 COPY . .
 
+# Database migration
 RUN rails db:migrate
 
 # Remove some unneeded files
 RUN rm -rf node_modules tmp/cache /usr/local/bundle/cache/*.gem \
 	vendor/assets spec
+
 
 #### Final image ####
 

@@ -1,4 +1,5 @@
 #!/bin/bash
 
 ./ts3server_startscript.sh start serveradmin_password=password
-bash
+#bash
+tail -f /dev/null

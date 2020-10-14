@@ -1,1 +1,2 @@
-docker container ls
+# 17: Display all currently active containers on Char
+docker ps

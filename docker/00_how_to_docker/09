@@ -1,1 +1,3 @@
+# 09: Commands to install packages needed to compile C source code
+# and push it onto git from the shell of a debian container
 apt update && apt -y upgrade && apt -y install gcc git

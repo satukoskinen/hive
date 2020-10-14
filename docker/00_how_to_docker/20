@@ -1,1 +1,3 @@
+# 20: Create a local swarm with Char as its leader
+#eval $(docker-machine env Char)
 docker swarm init --advertise-addr eth1

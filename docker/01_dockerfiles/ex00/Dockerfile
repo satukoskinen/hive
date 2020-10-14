@@ -1,5 +1,5 @@
 FROM alpine:latest
 
-RUN apk add emacs
+RUN apk add --no-cache emacs
 
 CMD ["emacs"]

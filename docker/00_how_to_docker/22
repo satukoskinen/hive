@@ -1,2 +1,4 @@
-#eval $(docker-machine env Aiur)
-docker swarm join --token SWMTKN-1-19vf3wxzssfovhkimbm10kffcitozrryp6wy842apglzzmfvoi-6kvlyis0lgr2cagiaa0jin6tt 192.168.99.101:2377
+# 22: Turn Aiur into a slave of the local swarm whose leader is Char
+TOKEN=$(docker swarm join-token -q worker)
+eval $(docker-machine env Aiur)
+docker swarm join --token $TOKEN $(docker-machine ip Char):2377

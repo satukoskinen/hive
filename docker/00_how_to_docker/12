@@ -1,1 +1,2 @@
+# 12: Launch a mysql container in the background
 docker run --detach --restart=on-failure --mount source=hatchery,target=/var/lib/mysql --name spawning-pool --env MYSQL_ROOT_PASSWORD=Kerrigan --env MYSQL_DATABASE=zerglings mysql

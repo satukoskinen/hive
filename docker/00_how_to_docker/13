@@ -1,1 +1,2 @@
+# 13: Print environment variables of spawning-pool container
 docker inspect -f {{.Config.Env}} spawning-pool

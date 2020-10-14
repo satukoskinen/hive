@@ -1,1 +1,2 @@
+# 25: List services of the local swarm
 docker service ls

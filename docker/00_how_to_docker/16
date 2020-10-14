@@ -1,1 +1,2 @@
-docker container logs spawning-pool
+# 16: Look up container logs in real time
+docker logs spawning-pool

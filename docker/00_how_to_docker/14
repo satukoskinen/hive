@@ -1,1 +1,2 @@
-docker run --detach --publish 8080:80 --name lair --link=spawning-pool:database wordpress
+# 14: Launch a wordpress container in the background
+docker run --detach --publish 8080:80 --name lair --link=spawning-pool:mysql wordpress

@@ -1,3 +1,8 @@
-docker-machine ssh Char mkdir HOME
-docker-machine scp -r app Char:HOME/app
-docker run -d -it --publish 3000:5000 --mount type=bind,source=/home/docker/HOME,dst=/root --name Abathur --workdir /root/app python:2-slim bash abathur_setup.sh
+# 19: Launch a 2-slim Python container with its /root bound to a $HOME/Abathur-app folder on the host machine
+# and customize it to use the Flask micro framework
+mkdir -p $HOME/Abathur-app
+#docker run -d -it --publish 3000:5000 --mount type=bind,source=$HOME/Abathur-app,dst=/root --name Abathur --workdir /root/app python:2-slim bash abathur_setup.sh
+docker run -d -it --publish 3000:5000 --mount type=bind,source=$HOME/Abathur-app,dst=/root --name Abathur python:2-slim
+docker exec Abathur pip install flask
+docker exec Abathur /bin/sh -c 'echo "from flask import Flask\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef hello_world():\n\treturn \"<h1>Hello world</h1>\"\n\nif __name__ == \"__main__\":\n\tapp.run(debug=True,host=\"0.0.0.0\")" > app.py'
+docker exec Abathur python app.py

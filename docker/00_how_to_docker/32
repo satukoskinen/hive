@@ -1,1 +1,2 @@
+# 32: Force quit and delete all containers
 docker container rm -f $(docker container ls --all --quiet)

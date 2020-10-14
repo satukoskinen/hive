@@ -1,1 +1,2 @@
+# 05: Launch the hello-world container
 docker run hello-world

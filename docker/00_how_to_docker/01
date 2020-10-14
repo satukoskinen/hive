@@ -1,1 +1,2 @@
+# 01: Create a VM with docker-machine using the virtualbox driver
 docker-machine create -d virtualbox Char

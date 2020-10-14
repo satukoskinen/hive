@@ -1,2 +1,3 @@
-#docker service logs engineering-bay
-docker service logs $(docker service ps -q engineering-bay | head -1)
+# 27: Get real time logs of one of the tasks of engineering-bay service
+docker service logs engineering-bay
+#docker service logs $(docker service ps -q engineering-bay | head -1)

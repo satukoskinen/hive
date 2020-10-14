@@ -1,1 +1,2 @@
+# 03: Define variables needed by Char in the general env of the terminal
 eval $(docker-machine env Char)
