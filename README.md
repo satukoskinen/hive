@@ -4,10 +4,9 @@ Some completed, some work in progress.
 
 C projects:
 - reloaded  
-  A bunch of catch-up C programing exercises upon starting the school.
+  A bunch of catch-up C programming exercises upon starting the school.
 - libft  
-  A personal C library to be used in the school projects, because using C standard libraries would be way too easy.  
-  It will be updated as new functions will be added.
+  A personal C library to be used in the school projects, because using C standard libraries would be way too easy. It will be updated as new functions will be added.
 - get_next_line  
   A function for reading a file, line by line.
 - fillit  
